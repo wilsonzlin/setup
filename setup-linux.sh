@@ -144,7 +144,7 @@ sudo apt autoremove -y
 sudo apt clean
 
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
-sudo sed -i 's/^GRUB_TIMEOUT=/GRUB_TIMEOUT=3/' /etc/default/grub
+sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/' /etc/default/grub
 sudo update-grub2
 
 sudo mysql_secure_installation
@@ -154,9 +154,9 @@ echo '[Service]' | sudo tee /etc/systemd/system/mysql.service.d/override.conf
 echo 'LimitNOFILE=infinity' | sudo tee -a /etc/systemd/system/mysql.service.d/override.conf
 
 sudo sed -i '/^skip-external-locking$/a sql-mode = "STRICT_ALL_TABLES,ONLY_FULL_GROUP_BY,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"' /etc/mysql/mysql.conf.d/mysqld.cnf
-sudo sed -i 's/^max_allowed_packet/max_allowed_packet = 4096M/' /etc/mysql/mysql.conf.d/mysqld.cnf
-sudo sed -i 's/^thread_stack/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mysqld.cnf
-sudo sed -i 's/^#max_connections/max_connections=1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i 's/^max_allowed_packet.*/max_allowed_packet = 4096M/' /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i 's/^thread_stack.*/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mysqld.cnf
+sudo sed -i 's/^#max_connections.*/max_connections = 1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
 echo 'net.ipv4.ip_local_port_range = 1024 65535' | sudo tee -a /etc/sysctl.conf
 if [ -d "/etc/lightdm" ]; then
