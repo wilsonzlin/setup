@@ -136,6 +136,7 @@ sudo apt purge -y \
     tomboy* \
     transmission* \
     update-notifier \
+    vino* \
     xfburn* \
     xplayer* \
     xviewer* \
