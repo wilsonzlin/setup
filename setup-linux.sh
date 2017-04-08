@@ -172,6 +172,8 @@ sudo sed -i 's/^thread_stack.*/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mys
 sudo sed -i 's/^#max_connections.*/max_connections = 1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
 echo 'net.ipv4.ip_local_port_range = 1024 65535' | sudo tee -a /etc/sysctl.conf
+echo 'net.core.somaxconn = 4096' | sudo tee -a /etc/sysctl.conf
+
 if [ -d "/etc/lightdm" ]; then
     echo '[SeatDefaults]' | sudo tee /etc/lightdm/lightdm.conf.d/50-disable-guest-login.conf
     echo 'allow-guest=false' | sudo tee -a /etc/lightdm/lightdm.conf.d/50-disable-guest-login.conf
