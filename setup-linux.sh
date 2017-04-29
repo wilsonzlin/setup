@@ -48,6 +48,7 @@ sudo apt dist-upgrade -y
 
 sudo apt install -y \
     build-essential \
+    default-jdk \
     dkms \
     exfat-fuse \
     exfat-utils \
@@ -67,11 +68,13 @@ sudo apt install -y \
     libyaml-dev \
     lua5.1 \
     make \
+    maven \
     mpv \
     mupdf \
     mysql-server \
     nano \
     nodejs \
+    openjfx \
     perl \
     php7.1 \
     php7.1-mbstring \
@@ -121,10 +124,7 @@ sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installe
 wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O vscode.deb
 sudo dpkg -i vscode.deb || true
 
-wget "https://github.com/atom/atom/releases/download/v1.13.1/atom-amd64.deb" -O atom.deb
-sudo dpkg -i atom.deb || true
-
-wget "https://download3.tixati.com/download/tixati_2.51-1_amd64.deb" -O tixati.deb
+wget "https://download2.tixati.com/download/tixati_2.53-1_amd64.deb" -O tixati.deb
 sudo dpkg -i tixati.deb || true
 
 sudo apt install -y -f
