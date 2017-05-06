@@ -38,6 +38,13 @@ echo 'set tabsize 4' > ~/.nanorc
 sudo apt update
 sudo apt install -y curl software-properties-common wget
 
+# Cassandra
+echo "deb http://www.apache.org/dist/cassandra/debian 310x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+
+# MongoDB
+echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo add-apt-repository -y ppa:ondrej/php
 sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $LSB_RELEASE contrib"
@@ -48,6 +55,7 @@ sudo apt dist-upgrade -y
 
 sudo apt install -y \
     build-essential \
+    cassandra \
     default-jdk \
     dkms \
     exfat-fuse \
@@ -69,6 +77,7 @@ sudo apt install -y \
     lua5.1 \
     make \
     maven \
+    mongodb-org \
     mpv \
     mupdf \
     mysql-server \
@@ -177,6 +186,14 @@ sudo sed -i '/^skip-external-locking$/a sql-mode = "STRICT_ALL_TABLES,ONLY_FULL_
 sudo sed -i 's/^max_allowed_packet.*/max_allowed_packet = 4096M/' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^thread_stack.*/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^#max_connections.*/max_connections = 1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
+
+sudo mkdir -p /etc/systemd/system/mongod.service.d/
+echo '[Service]' | sudo tee /etc/systemd/system/mongod.service.d/override.conf
+echo 'LimitFSIZE=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
+echo 'LimitCPU=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
+echo 'LimitAS=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
+echo 'LimitNOFILE=64000' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
+echo 'LimitNPROC=64000' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
 
 echo 'net.ipv4.ip_local_port_range = 1024 65535' | sudo tee -a /etc/sysctl.conf
 echo 'net.core.somaxconn = 4096' | sudo tee -a /etc/sysctl.conf
