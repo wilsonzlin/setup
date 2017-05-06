@@ -215,7 +215,6 @@ sudo ufw enable
 
 sudo systemctl disable cups-browsed.service
 sudo systemctl disable mysql.service
-sudo systemctl disable apache2.service
 sudo systemctl disable mongod.service
 sudo systemctl disable cassandra.service
 
