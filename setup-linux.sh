@@ -124,18 +124,24 @@ sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installe
 wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O vscode.deb
 sudo dpkg -i vscode.deb || true
 
-wget "https://download2.tixati.com/download/tixati_2.53-1_amd64.deb" -O tixati.deb
-sudo dpkg -i tixati.deb || true
-
 sudo apt install -y -f
 
 sudo apt purge -y \
     audacious* \
     brasero* \
+    gnome-bluetooth* \
+    gnome-orca* \
     gpicview* \
+    gufw* \
     guvcview* \
     hexchat* \
     lubuntu-software-center \
+    mintbackup* \
+    mintinstall* \
+    mintnanny* \
+    mintupdate* \
+    mintupload* \
+    mintwelcome* \
     mplayer* \
     mtpaint* \
     pidgin* \
@@ -149,6 +155,7 @@ sudo apt purge -y \
     transmission* \
     update-notifier \
     vino* \
+    xed* \
     xfburn* \
     xplayer* \
     xviewer* \
