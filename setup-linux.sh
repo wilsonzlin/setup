@@ -43,6 +43,7 @@ echo "deb http://www.apache.org/dist/cassandra/debian 310x main" | sudo tee -a /
 curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
 
 # MongoDB
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
