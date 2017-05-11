@@ -46,6 +46,15 @@ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
+# Oracle JDK 8
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt install oracle-java8-installer
+
+# MySQL Workbench
+wget "https://dev.mysql.com/get/mysql-apt-config_0.8.5-1_all.deb" -O mysql-apt.deb
+sudo dpkg -i mysql-apt.deb || true
+
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo add-apt-repository -y ppa:ondrej/php
 sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $LSB_RELEASE contrib"
@@ -57,7 +66,6 @@ sudo apt dist-upgrade -y
 sudo apt install -y \
     build-essential \
     cassandra \
-    default-jdk \
     dkms \
     exfat-fuse \
     exfat-utils \
@@ -82,9 +90,9 @@ sudo apt install -y \
     mpv \
     mupdf \
     mysql-server \
+    mysql-workbench-community \
     nano \
     nodejs \
-    openjfx \
     perl \
     php7.1 \
     php7.1-mbstring \
@@ -139,7 +147,6 @@ sudo apt install -y -f
 sudo apt purge -y \
     audacious* \
     brasero* \
-    gnome-bluetooth* \
     gnome-orca* \
     gpicview* \
     gufw* \
@@ -165,6 +172,7 @@ sudo apt purge -y \
     transmission* \
     update-notifier \
     vino* \
+    virtualbox-guest* \
     xed* \
     xfburn* \
     xplayer* \
