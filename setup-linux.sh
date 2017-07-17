@@ -13,19 +13,20 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 echo ============== REQUIREMENTS ==============
-echo "- A constant working Internet connection"
-echo "- Local mirrors used for system package repositiories"
-echo "- This script not run as sudo"
+echo "- A reliable working Internet connection for the next hour"
+echo "- Package sources set to local, fast mirrors"
+echo "- An hour of your free time as user interaction WILL be required"
 echo
 
 read -p "Do you wish to continue? (y) " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Aborting..."
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
 LSB_RELEASE="$(lsb_release -s -c)"
-if [ "$LSB_RELEASE" == "serena" ]; then
+if [ "$LSB_RELEASE" == "serena" ] || [ "$LSB_RELEASE" == "sonya" ] ; then
     LSB_RELEASE="xenial"
 fi
 
@@ -52,10 +53,10 @@ sudo apt-get update
 sudo apt install oracle-java8-installer
 
 # MySQL Workbench
-wget "https://dev.mysql.com/get/mysql-apt-config_0.8.5-1_all.deb" -O mysql-apt.deb
+wget "https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb" -O mysql-apt.deb
 sudo dpkg -i mysql-apt.deb || true
 
-curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo add-apt-repository -y ppa:ondrej/php
 sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $LSB_RELEASE contrib"
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
@@ -133,8 +134,8 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bash_aliases
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
-rbenv install 2.3.3
-rbenv global 2.3.3
+rbenv install 2.4.1
+rbenv global 2.4.1
 
 wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"  -O chrome.deb
 sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installed -- this is fixed later with `apt install -f`
