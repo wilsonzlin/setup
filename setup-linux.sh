@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# TESTED ON lubuntu 16.04 and Linux Mint 18.1
-# Don't install nvidia-367, as that might cause conflicts and this script should be device-independent
-# Don't need TrueCrypt - just use built-in tools to mount
+# TESTED ON:
+# lubuntu     16.04
+# Linux Mint  18.1, 18.2
 
 set -e
 
@@ -13,9 +13,9 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 echo ============== REQUIREMENTS ==============
-echo "- A reliable working Internet connection for the next hour"
+echo "- A reliable, working Internet connection for the next hour"
 echo "- Package sources set to local, fast mirrors"
-echo "- An hour of your free time as user interaction WILL be required"
+echo "- An hour of your free time as user interaction will be required"
 echo
 
 read -p "Do you wish to continue? (y) " -n 1 -r
@@ -33,8 +33,6 @@ fi
 rm -rf ~/.setup-linux
 mkdir ~/.setup-linux
 cd ~/.setup-linux
-
-echo 'set tabsize 4' > ~/.nanorc
 
 sudo apt update
 sudo apt install -y curl software-properties-common wget
@@ -56,9 +54,14 @@ sudo apt install oracle-java8-installer
 wget "https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb" -O mysql-apt.deb
 sudo dpkg -i mysql-apt.deb || true
 
+# Node.js
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+
+# PHP 7.x
 sudo add-apt-repository -y ppa:ondrej/php
 sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $LSB_RELEASE contrib"
+
+# VirtualBox
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
 sudo apt update
@@ -183,7 +186,7 @@ sudo apt autoremove -y
 sudo apt clean
 
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
-sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/' /etc/default/grub
+sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/' /etc/default/grub
 sudo update-grub2
 
 sudo mysql_secure_installation
