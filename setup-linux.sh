@@ -235,6 +235,9 @@ sudo sed -i '/pam_unix.so nullok_secure$/pam_unix.so nullok_secure nodelay' /etc
 # Don't ask for password when sudoing
 echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/no-sudo-pw
 
+# Disable npm package-lock.json creation
+npm config set package-lock false
+
 cd ~
 rm -rf ~/.setup-linux
 
