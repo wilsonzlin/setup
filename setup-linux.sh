@@ -230,6 +230,11 @@ sudo systemctl disable mysql.service
 sudo systemctl disable mongod.service
 sudo systemctl disable cassandra.service
 
+# Don't delay when entering incorrect password
+sudo sed -i '/pam_unix.so nullok_secure$/pam_unix.so nullok_secure nodelay' /etc/pam.d/common-auth
+# Don't ask for password when sudoing
+echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/no-sudo-pw
+
 cd ~
 rm -rf ~/.setup-linux
 
