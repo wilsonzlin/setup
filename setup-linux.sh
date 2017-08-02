@@ -138,6 +138,7 @@ sudo apt install -y -f
 sudo apt purge -y \
     audacious* \
     brasero* \
+    btrfs-tools \
     gnome-orca* \
     gpicview* \
     gufw* \
