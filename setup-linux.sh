@@ -127,19 +127,6 @@ if [ "$COMPOSER_INSTALLER_ACTUAL_SIGNATURE" = "$COMPOSER_INSTALLER_EXPECTED_SIGN
     sudo mv composer.phar /usr/local/bin/composer
 fi
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_aliases
-echo 'eval "$(rbenv init -)"' >> ~/.bash_aliases
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bash_aliases
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
-rbenv install 2.4.1
-rbenv global 2.4.1
-
 wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"  -O chrome.deb
 sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installed -- this is fixed later with `apt install -f`
 
