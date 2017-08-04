@@ -229,6 +229,8 @@ npm config set package-lock false
 cd ~
 rm -rf ~/.setup-linux
 
+mkdir -p ~/Applications
+
 echo
 echo "================================================="
 echo "All done! It's best to restart your computer now."
