@@ -48,9 +48,13 @@ echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb
 # Oracle JDK 8
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
+# Java needs to be installed BEFORE some packages (otherwise, they'll install openjdk*)
 sudo apt install oracle-java8-installer
 
-# MySQL Workbench
+# TLP
+sudo add-apt-repository -y ppa:linrunner/tlp
+
+# MySQL Workbench and Server
 wget "https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb" -O mysql-apt.deb
 sudo dpkg -i mysql-apt.deb || true
 
@@ -105,6 +109,8 @@ sudo apt install -y \
     python-software-properties \
     silversearcher-ag \
     sqlite3 \
+    tlp \
+    tlp-rdw \
     viewnior \
     virtualbox-5.1 \
     vlc \
@@ -173,21 +179,30 @@ sudo apt purge -y \
 sudo apt autoremove -y
 sudo apt clean
 
+# Configure TLP
+sudo sed -i 's/^RESTORE_DEVICE_STATE_ON_STARTUP=.*$/RESTORE_DEVICE_STATE_ON_STARTUP=1/' /etc/default/grub
+
+# Configure grub
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
 sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/' /etc/default/grub
+sudo sed -i 's/^#GRUB_GFXMODE=640x480/GRUB_GFXMODE=1024x768x32/' /etc/default/grub
 sudo update-grub2
 
+# Set up MySQL databases
 sudo mysql_secure_installation
 
+# Configure MySQL service
 sudo mkdir -p /etc/systemd/system/mysql.service.d/
 echo '[Service]' | sudo tee /etc/systemd/system/mysql.service.d/override.conf
 echo 'LimitNOFILE=infinity' | sudo tee -a /etc/systemd/system/mysql.service.d/override.conf
 
+# Tune MySQL
 sudo sed -i '/^skip-external-locking$/a sql-mode = "STRICT_ALL_TABLES,ONLY_FULL_GROUP_BY,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^max_allowed_packet.*/max_allowed_packet = 4096M/' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^thread_stack.*/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^#max_connections.*/max_connections = 1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
+# Configure MongoDB service
 sudo mkdir -p /etc/systemd/system/mongod.service.d/
 echo '[Service]' | sudo tee /etc/systemd/system/mongod.service.d/override.conf
 echo 'LimitFSIZE=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
@@ -196,14 +211,17 @@ echo 'LimitAS=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/overr
 echo 'LimitNOFILE=64000' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
 echo 'LimitNPROC=64000' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
 
+# Tune Linux networking
 echo 'net.ipv4.ip_local_port_range = 1024 65535' | sudo tee -a /etc/sysctl.conf
 echo 'net.core.somaxconn = 4096' | sudo tee -a /etc/sysctl.conf
 
+# Disable guest login
 if [ -d "/etc/lightdm" ]; then
     echo '[SeatDefaults]' | sudo tee /etc/lightdm/lightdm.conf.d/50-disable-guest-login.conf
     echo 'allow-guest=false' | sudo tee -a /etc/lightdm/lightdm.conf.d/50-disable-guest-login.conf
 fi
 
+# Configure git
 read -e -p "Enter your Git name: " GIT_NAME
 read -e -p "Enter your Git email: " GIT_EMAIL
 git config --global user.name "$GIT_NAME"
@@ -211,8 +229,10 @@ git config --global user.email "$GIT_EMAIL"
 git config --global core.editor nano
 git config --global push.default simple
 
+# Enable firewall
 sudo ufw enable
 
+# Disable unneeded services from running automatically at startup
 sudo systemctl disable cups-browsed.service
 sudo systemctl disable mysql.service
 sudo systemctl disable mongod.service
@@ -226,10 +246,13 @@ echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/no-sudo-pw
 # Disable npm package-lock.json creation
 npm config set package-lock false
 
+# Delete temporary folder
 cd ~
 rm -rf ~/.setup-linux
 
+# Make boilerplate folders in home folder
 mkdir -p ~/Applications
+mkdir -p ~/bin
 
 echo
 echo "================================================="

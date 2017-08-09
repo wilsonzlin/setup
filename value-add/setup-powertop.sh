@@ -2,9 +2,6 @@
 
 set -e
 
-sudo apt install powertop
-sudo sed -i '/^exit 0$/i \
-powertop --auto-tune &\
-' /etc/rc.local
+echo "Do NOT use powertop, just use tlp"
 
-exit 0
+exit 1
