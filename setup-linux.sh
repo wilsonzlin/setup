@@ -150,6 +150,8 @@ sudo apt purge -y \
     gufw* \
     guvcview* \
     hexchat* \
+    # Purging libreoffice* will break Linux Mint's UI
+    libreoffice-common \
     lubuntu-software-center \
     mintbackup* \
     mintinstall* \
