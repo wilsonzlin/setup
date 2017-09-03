@@ -127,10 +127,11 @@ sudo dpkg -i vscode.deb || true
 sudo apt install -y -f
 
 # Purging libreoffice* will break Linux Mint's UI
-sudo apt purge -y \
+packages_to_remove="\
     audacious* \
     brasero* \
     btrfs-tools \
+    gnome-mplayer* \
     gnome-orca* \
     gpicview* \
     gufw* \
@@ -162,7 +163,19 @@ sudo apt purge -y \
     xed* \
     xfburn* \
     xplayer* \
-    xviewer* || true
+    xviewer* \
+"
+
+packages_to_remove_filtered=""
+
+for pkg in $(echo $packages_to_remove); do
+    output="$(sudo apt list --installed "$pkg" | wc -l)"
+    if [ "$output" -gt 1 ]; then
+        packages_to_remove_filtered="$packages_to_remove_filtered $pkg"
+    fi
+done
+
+sudo apt purge -y $packages_to_remove_filtered
 
 sudo apt autoremove -y
 sudo apt clean
