@@ -105,6 +105,7 @@ sudo apt install -y \
     sqlite3 \
     tlp \
     tlp-rdw \
+    tree \
     viewnior \
     virtualbox-5.1 \
     vlc \
