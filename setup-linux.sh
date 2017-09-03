@@ -61,10 +61,6 @@ sudo dpkg -i mysql-apt.deb || true
 # Node.js
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
-# PHP 7.x
-sudo add-apt-repository -y ppa:ondrej/php
-sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $LSB_RELEASE contrib"
-
 # VirtualBox
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
@@ -121,10 +117,6 @@ VBOX_EXTPACK_FILENAME="Oracle_VM_VirtualBox_Extension_Pack-$VBOX_VERSION_POINT-$
 wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION_POINT/$VBOX_EXTPACK_FILENAME
 sudo VBoxManage extpack install $VBOX_EXTPACK_FILENAME --replace
 
-COMPOSER_INSTALLER_EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-COMPOSER_INSTALLER_ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
-
 wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"  -O chrome.deb
 sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installed -- this is fixed later with `apt install -f`
 
@@ -133,6 +125,7 @@ sudo dpkg -i vscode.deb || true
 
 sudo apt install -y -f
 
+# Purging libreoffice* will break Linux Mint's UI
 sudo apt purge -y \
     audacious* \
     brasero* \
@@ -142,7 +135,7 @@ sudo apt purge -y \
     gufw* \
     guvcview* \
     hexchat* \
-    # Purging libreoffice* will break Linux Mint's UI
+    leafpad* \
     libreoffice-common \
     lubuntu-software-center \
     mintbackup* \
@@ -168,7 +161,7 @@ sudo apt purge -y \
     xed* \
     xfburn* \
     xplayer* \
-    xviewer* \
+    xviewer* || true
 
 sudo apt autoremove -y
 sudo apt clean
@@ -227,7 +220,7 @@ git config --global push.default simple
 sudo ufw enable
 
 # Disable unneeded services from running automatically at startup
-sudo systemctl disable cups-browsed.service
+sudo systemctl disable cups-browsed.service || true
 sudo systemctl disable mysql.service
 sudo systemctl disable mongod.service
 sudo systemctl disable cassandra.service
