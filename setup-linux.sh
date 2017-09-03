@@ -72,6 +72,7 @@ sudo apt update
 sudo apt dist-upgrade -y
 
 sudo apt install -y \
+    bc \
     build-essential \
     cassandra \
     dkms \
@@ -92,6 +93,7 @@ sudo apt install -y \
     libxslt1-dev \
     libyaml-dev \
     lua5.1 \
+    lvm2 \
     make \
     maven \
     mongodb-org \
@@ -102,10 +104,6 @@ sudo apt install -y \
     nano \
     nodejs \
     perl \
-    php7.1 \
-    php7.1-mbstring \
-    php7.1-mcrypt \
-    php7.1-mysql \
     python-software-properties \
     silversearcher-ag \
     sqlite3 \
@@ -126,12 +124,6 @@ sudo VBoxManage extpack install $VBOX_EXTPACK_FILENAME --replace
 COMPOSER_INSTALLER_EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 COMPOSER_INSTALLER_ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
-
-if [ "$COMPOSER_INSTALLER_ACTUAL_SIGNATURE" = "$COMPOSER_INSTALLER_EXPECTED_SIGNATURE" ]; then
-    php composer-setup.php --quiet
-    rm composer-setup.php
-    sudo mv composer.phar /usr/local/bin/composer
-fi
 
 wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"  -O chrome.deb
 sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installed -- this is fixed later with `apt install -f`
