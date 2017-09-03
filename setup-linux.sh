@@ -49,7 +49,7 @@ echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
 # Java needs to be installed BEFORE some packages (otherwise, they'll install openjdk*)
-sudo apt install oracle-java8-installer
+sudo apt install -y oracle-java8-installer
 
 # TLP
 sudo add-apt-repository -y ppa:linrunner/tlp
