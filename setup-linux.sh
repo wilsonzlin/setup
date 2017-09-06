@@ -128,11 +128,13 @@ sudo apt install -y -f
 
 # Purging libreoffice* will break Linux Mint's UI
 packages_to_remove="\
+    abiword* \
     audacious* \
     brasero* \
     btrfs-tools \
     gnome-mplayer* \
     gnome-orca* \
+    gnumeric* \
     gpicview* \
     gufw* \
     guvcview* \
@@ -162,6 +164,7 @@ packages_to_remove="\
     virtualbox-guest* \
     xed* \
     xfburn* \
+    xpad \
     xplayer* \
     xviewer* \
 "
