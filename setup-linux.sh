@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # TESTED ON:
+# Ubuntu      16.04.3
 # lubuntu     16.04
 # Linux Mint  18.1, 18.2
 
@@ -73,7 +74,6 @@ sudo apt install -y \
     dkms \
     exfat-fuse \
     exfat-utils \
-    geany \
     gimp \
     git \
     gparted \
@@ -133,6 +133,7 @@ packages_to_remove="\
     btrfs-tools \
     gnome-mplayer* \
     gnome-orca* \
+    gnome-software* \
     gnumeric* \
     gpicview* \
     gufw* \
@@ -151,15 +152,20 @@ packages_to_remove="\
     mtpaint* \
     pidgin* \
     pix* \
+    remmina* \
     rhythmbox* \
     simple-scan* \
     sylpheed* \
     thunderbird* \
     tomboy* \
     transmission* \
+    ubuntu-software* \
+    unity-webapps* \
     update-notifier \
     vino* \
     virtualbox-guest* \
+    webapp-container* \
+    webbrowser-app* \
     xed* \
     xfburn* \
     xpad \
