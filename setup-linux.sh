@@ -45,23 +45,22 @@ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
 echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 
-# Oracle JDK 8
-sudo add-apt-repository -y ppa:webupd8team/java
-sudo apt-get update
-# Java needs to be installed BEFORE some packages (otherwise, they'll install openjdk*)
-sudo apt install -y oracle-java8-installer
+# OpenJDK
+# Java needs to be installed BEFORE some packages
+sudo apt install -y default-jdk
 
 # TLP
 sudo add-apt-repository -y ppa:linrunner/tlp
 
 # MySQL Workbench and Server
-wget "https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb" -O mysql-apt.deb
+wget "https://dev.mysql.com/get/mysql-apt-config_0.8.8-1_all.deb" -O mysql-apt.deb
 sudo dpkg -i mysql-apt.deb || true
 
 # Node.js
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 # VirtualBox
+echo "deb http://download.virtualbox.org/virtualbox/debian $LSB_RELEASE contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.sources.list
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
 sudo apt update
@@ -107,7 +106,7 @@ sudo apt install -y \
     tlp-rdw \
     tree \
     viewnior \
-    virtualbox-5.1 \
+    virtualbox-5.2 \
     vlc \
     zlib1g-dev \
 
@@ -152,7 +151,6 @@ packages_to_remove="\
     mtpaint* \
     pidgin* \
     pix* \
-    plymouth-theme-ubuntu-text \
     rhythmbox* \
     simple-scan* \
     sylpheed* \
@@ -225,14 +223,6 @@ if [ -d "/etc/lightdm" ]; then
     echo 'allow-guest=false' | sudo tee -a /etc/lightdm/lightdm.conf.d/50-disable-guest-login.conf
 fi
 
-# Configure git
-read -e -p "Enter your Git name: " GIT_NAME
-read -e -p "Enter your Git email: " GIT_EMAIL
-git config --global user.name "$GIT_NAME"
-git config --global user.email "$GIT_EMAIL"
-git config --global core.editor nano
-git config --global push.default simple
-
 # Enable firewall
 sudo ufw enable
 
@@ -246,9 +236,6 @@ sudo systemctl disable cassandra.service
 sudo sed -i 's/pam_unix.so nullok_secure$/pam_unix.so nullok_secure nodelay/' /etc/pam.d/common-auth
 # Don't ask for password when sudoing
 echo "$USER ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/no-sudo-pw
-
-# Disable npm package-lock.json creation
-npm config set package-lock false
 
 # Delete temporary folder
 cd ~
