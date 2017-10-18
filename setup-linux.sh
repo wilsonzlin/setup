@@ -131,6 +131,7 @@ packages_to_remove="\
     audacious* \
     brasero* \
     btrfs-tools \
+    gedit* \
     gnome-mplayer* \
     gnome-orca* \
     gnome-software* \
@@ -153,11 +154,12 @@ packages_to_remove="\
     pidgin* \
     pix* \
     remmina* \
-    rhythmbox* \
+    *rhythmbox* \
     simple-scan* \
     sylpheed* \
     thunderbird* \
     tomboy* \
+    *totem* \
     transmission* \
     ubuntu-software* \
     unity-webapps* \
