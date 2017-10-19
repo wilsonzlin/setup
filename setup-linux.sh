@@ -131,10 +131,13 @@ packages_to_remove="\
     audacious* \
     brasero* \
     btrfs-tools \
+    eog* \
     gedit* \
+    gnome-calendar* \
     gnome-mplayer* \
     gnome-orca* \
     gnome-software* \
+    gnome-user-share \
     gnumeric* \
     gpicview* \
     gufw* \
@@ -151,10 +154,12 @@ packages_to_remove="\
     mintwelcome* \
     mplayer* \
     mtpaint* \
+    nautilus-share* \
     pidgin* \
     pix* \
     remmina* \
     *rhythmbox* \
+    shotwell* \
     simple-scan* \
     sylpheed* \
     thunderbird* \
