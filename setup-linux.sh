@@ -195,7 +195,7 @@ sudo apt autoremove -y
 sudo apt clean
 
 # Configure TLP
-sudo sed -i 's/^RESTORE_DEVICE_STATE_ON_STARTUP=.*$/RESTORE_DEVICE_STATE_ON_STARTUP=1/' /etc/default/grub
+sudo sed -i 's/^RESTORE_DEVICE_STATE_ON_STARTUP=.*$/RESTORE_DEVICE_STATE_ON_STARTUP=1/' /etc/default/tlp
 
 # Configure grub
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
