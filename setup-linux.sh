@@ -38,18 +38,6 @@ cd ~/.setup-linux
 sudo apt update
 sudo apt install -y curl software-properties-common wget
 
-# Cassandra
-echo "deb http://www.apache.org/dist/cassandra/debian 310x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
-
-# MongoDB
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu $LSB_RELEASE/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
-
-# OpenJDK
-# Java needs to be installed BEFORE some packages
-sudo apt install -y default-jdk
-
 # TLP
 sudo add-apt-repository -y ppa:linrunner/tlp
 
@@ -70,7 +58,7 @@ sudo apt dist-upgrade -y
 sudo apt install -y \
     bc \
     build-essential \
-    cassandra \
+    default-jdk \
     dkms \
     exfat-fuse \
     exfat-utils \
@@ -91,7 +79,6 @@ sudo apt install -y \
     lvm2 \
     make \
     maven \
-    mongodb-org \
     mpv \
     mupdf \
     mysql-server \
@@ -199,7 +186,7 @@ sudo sed -i 's/^RESTORE_DEVICE_STATE_ON_STARTUP=.*$/RESTORE_DEVICE_STATE_ON_STAR
 
 # Configure grub
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"$/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
-sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=1/' /etc/default/grub
+sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=3/' /etc/default/grub
 sudo sed -i 's/^#GRUB_GFXMODE=640x480/GRUB_GFXMODE=1024x768x32/' /etc/default/grub
 sudo update-grub2
 
@@ -217,15 +204,6 @@ sudo sed -i 's/^max_allowed_packet.*/max_allowed_packet = 4096M/' /etc/mysql/mys
 sudo sed -i 's/^thread_stack.*/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^#max_connections.*/max_connections = 1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
-# Configure MongoDB service
-sudo mkdir -p /etc/systemd/system/mongod.service.d/
-echo '[Service]' | sudo tee /etc/systemd/system/mongod.service.d/override.conf
-echo 'LimitFSIZE=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
-echo 'LimitCPU=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
-echo 'LimitAS=infinity' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
-echo 'LimitNOFILE=64000' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
-echo 'LimitNPROC=64000' | sudo tee -a /etc/systemd/system/mongod.service.d/override.conf
-
 # Tune Linux networking
 echo 'net.ipv4.ip_local_port_range = 1024 65535' | sudo tee -a /etc/sysctl.conf
 echo 'net.core.somaxconn = 4096' | sudo tee -a /etc/sysctl.conf
@@ -242,8 +220,6 @@ sudo ufw enable
 # Disable unneeded services from running automatically at startup
 sudo systemctl disable cups-browsed.service || true
 sudo systemctl disable mysql.service
-sudo systemctl disable mongod.service
-sudo systemctl disable cassandra.service
 
 # Don't delay when entering incorrect password
 sudo sed -i 's/pam_unix.so nullok_secure$/pam_unix.so nullok_secure nodelay/' /etc/pam.d/common-auth
