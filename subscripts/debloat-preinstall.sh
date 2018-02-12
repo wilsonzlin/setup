@@ -10,6 +10,7 @@ packages_to_remove="\
     brasero* \
     btrfs-tools \
     eog* \
+    evince* \
     gedit* \
     gnome-calendar* \
     gnome-mplayer* \

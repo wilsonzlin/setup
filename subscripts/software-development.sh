@@ -16,7 +16,8 @@ sudo apt install -y \
     python-2.7 \
     python-pip \
     python3-pip \
-    lua5.1
+    lua5.1 \
+    vim
 
 wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O vscode.deb
 sudo dpkg -i vscode.deb || true
