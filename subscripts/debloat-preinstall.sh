@@ -4,6 +4,7 @@ set -e
 
 # Purge unneeded packages
 # Purging libreoffice* will break Linux Mint's UI
+# gnome-control-center requires gnome-user-share
 packages_to_remove="\
     abiword* \
     audacious* \
@@ -16,7 +17,6 @@ packages_to_remove="\
     gnome-mplayer* \
     gnome-orca* \
     gnome-software* \
-    gnome-user-share \
     gnumeric* \
     gpicview* \
     gufw* \
