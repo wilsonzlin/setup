@@ -2,6 +2,8 @@
 
 set -e
 
+pushd "$( mktemp -d )"
+
 # MySQL Workbench and Server
 wget "https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb" -O mysql-apt.deb
 sudo dpkg -i mysql-apt.deb || true
@@ -26,7 +28,9 @@ sudo sed -i 's/^max_allowed_packet.*/max_allowed_packet = 4096M/' /etc/mysql/mys
 sudo sed -i 's/^thread_stack.*/thread_stack = 256K/' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo sed -i 's/^#max_connections.*/max_connections = 1000000/' /etc/mysql/mysql.conf.d/mysqld.cnf
 
-# Disable unneeded services from running automatically at startup
+# Prevent running automatically at startup
 sudo systemctl disable mysql.service
+
+popd
 
 exit 0

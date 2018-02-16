@@ -3,7 +3,7 @@
 set -e
 
 # Make boilerplate folders in home folder
-mkdir -p ~/Applications
-mkdir -p ~/bin
+mkdir -p "$HOME/Applications"
+mkdir -p "$HOME/bin"
 
 exit 0

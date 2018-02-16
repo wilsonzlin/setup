@@ -4,9 +4,14 @@ set -e
 
 # Purge unneeded packages
 # Purging libreoffice* will break Linux Mint's UI
-# gnome-control-center requires gnome-user-share
+# gnome-control-center requires gnome-user-share and
+#   a few libtotem* packages so don't purge *totem*
+# cheese is heavily integrated into older versions of
+#   Ubuntu so can't purge globally (it's also slightly
+#   useful)
 packages_to_remove="\
     abiword* \
+    aisleriot* \
     audacious* \
     brasero* \
     btrfs-tools \
@@ -14,9 +19,12 @@ packages_to_remove="\
     evince* \
     gedit* \
     gnome-calendar* \
+    gnome-mahjongg* \
+    gnome-mines* \
     gnome-mplayer* \
     gnome-orca* \
     gnome-software* \
+    gnome-sudoku* \
     gnumeric* \
     gpicview* \
     gufw* \
@@ -43,9 +51,10 @@ packages_to_remove="\
     sylpheed* \
     thunderbird* \
     tomboy* \
-    *totem* \
+    totem* \
     transmission* \
     ubuntu-software* \
+    ubuntu-web-launchers \
     unity-webapps* \
     update-notifier \
     vino* \
