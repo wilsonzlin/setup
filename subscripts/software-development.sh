@@ -15,7 +15,7 @@ sudo apt install -y \
     maven \
     nodejs \
     sqlite3 \
-    python-2.7 \
+    python2.7 \
     python-pip \
     python3-pip \
     lua5.1 \
