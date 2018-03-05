@@ -8,7 +8,6 @@ sudo apt install -y \
     mupdf \
     viewnior \
     vlc \
-    nano \
-    gparted
+    nano
 
 exit 0
