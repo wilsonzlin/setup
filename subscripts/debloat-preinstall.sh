@@ -17,7 +17,6 @@ packages_to_remove="\
     btrfs-tools \
     eog* \
     evince* \
-    gedit* \
     gnome-calendar* \
     gnome-mahjongg* \
     gnome-mines* \
