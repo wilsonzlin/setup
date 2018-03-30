@@ -7,6 +7,7 @@ sudo apt install -y \
     tree \
     exfat-fuse \
     exfat-utils \
-    httpie
+    httpie \
+    nano
 
 exit 0
