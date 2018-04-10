@@ -56,6 +56,7 @@ packages_to_remove="\
     ubuntu-web-launchers \
     unity-webapps* \
     update-notifier \
+    vim* \
     vino* \
     virtualbox-guest* \
     webapp-container* \
