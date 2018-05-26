@@ -14,17 +14,18 @@ sudo add-apt-repository \
    $sl_lsb_release \
    stable"
 
+# VS Code
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
 sudo apt update
 
 sudo apt install -y \
     docker-ce \
     git \
-    nodejs
-
-wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O vscode.deb
-sudo dpkg -i vscode.deb || true
-
-sudo apt install -y -f
+    nodejs \
+    code
 
 popd
 
