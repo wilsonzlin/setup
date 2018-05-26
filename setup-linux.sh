@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # TESTED ON:
-# Ubuntu      16.04.3, 17.10.1
+# Ubuntu      16.04.3, 17.10.1, 18.04 Minimal
 # lubuntu     16.04
 # Linux Mint  18.1, 18.2
 
