@@ -10,5 +10,3 @@ sudo dpkg -i chrome.deb || true # Avoid failing if dependencies are not installe
 sudo apt install -y -f
 
 popd
-
-exit 0

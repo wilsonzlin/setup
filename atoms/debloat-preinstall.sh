@@ -7,8 +7,7 @@ set -e
 # gnome-control-center requires gnome-user-share and
 #   a few libtotem* packages so don't purge *totem*
 # cheese is heavily integrated into older versions of
-#   Ubuntu so can't purge globally (it's also slightly
-#   useful)
+#   Ubuntu so can't purge globally (it's also useful)
 packages_to_remove="\
     abiword* \
     aisleriot* \
@@ -83,5 +82,3 @@ sudo apt autoremove -y
 
 # Disable unneeded services from running automatically at startup
 sudo systemctl disable cups-browsed.service || true
-
-exit 0

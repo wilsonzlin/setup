@@ -34,17 +34,15 @@ if [ "$sl_lsb_release" == "serena" ] || [ "$sl_lsb_release" == "sonya" ] ; then
 fi
 export sl_lsb_release
 
-cd subscripts
+bash prereq.sh
 
-for script in *.sh; do
+for script in atoms/*.sh; do
     bash "$script" || break
 done
 
-cd ..
-
 echo
 echo "================================================="
-echo "All done! It's best to restart your computer now."
+echo "Almost done, just restart your device"
 echo "================================================="
 echo
 

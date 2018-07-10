@@ -4,7 +4,6 @@ set -e
 
 pushd "$( mktemp -d )"
 
-# VirtualBox
 echo "deb http://download.virtualbox.org/virtualbox/debian $sl_lsb_release contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.sources.list
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
@@ -22,5 +21,3 @@ wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION_POINT/$VBOX_EXTPACK
 echo y | sudo VBoxManage extpack install $VBOX_EXTPACK_FILENAME --replace
 
 popd
-
-exit 0
