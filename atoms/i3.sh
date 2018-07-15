@@ -11,6 +11,6 @@ sudo dpkg -i ./keyring.deb
 echo "deb http://debian.sur5r.net/i3/ $sl_lsb_release universe" | sudo tee -a /etc/apt/sources.list.d/sur5r-i3.list
 
 sudo apt update
-sudo apt install -y i3
+sudo apt install -y i3 i3status i3lock suckless-tools
 
 popd
