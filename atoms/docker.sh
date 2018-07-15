@@ -16,3 +16,5 @@ sudo add-apt-repository \
 sudo apt update
 
 sudo apt install docker-ce
+
+sudo usermod -a -G docker "$USER"
