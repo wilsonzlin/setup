@@ -4,7 +4,7 @@ set -e
 
 pushd "$( mktemp -d )"
 
-echo "deb http://download.virtualbox.org/virtualbox/debian $sl_lsb_release contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.sources.list
+echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $sl_lsb_release contrib" | sudo tee -a /etc/apt/sources.list.d/virtualbox.sources.list
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 
 sudo apt update
