@@ -20,4 +20,6 @@ VBOX_EXTPACK_FILENAME="Oracle_VM_VirtualBox_Extension_Pack-$VBOX_VERSION_POINT-$
 wget http://download.virtualbox.org/virtualbox/$VBOX_VERSION_POINT/$VBOX_EXTPACK_FILENAME
 echo y | sudo VBoxManage extpack install $VBOX_EXTPACK_FILENAME --replace
 
+sudo usermod -a -G vboxusers "$USER"
+
 popd
