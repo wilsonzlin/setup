@@ -6,4 +6,4 @@ sudo apt install -y \
   python3-pip \
   fonts-powerline
 
-pip3 install --user powershell-shell
+pip3 install --user powerline-shell
