@@ -64,6 +64,7 @@ packages_to_remove="\
     xfburn* \
     xpad \
     xplayer* \
+    *xscreensaver* \
     xviewer* \
 "
 
