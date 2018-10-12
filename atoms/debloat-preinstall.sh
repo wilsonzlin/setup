@@ -60,7 +60,6 @@ packages_to_remove="\
     virtualbox-guest* \
     webapp-container* \
     webbrowser-app* \
-    xed* \
     xfburn* \
     xpad \
     xplayer* \
