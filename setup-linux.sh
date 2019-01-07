@@ -3,7 +3,7 @@
 # TESTED ON:
 # Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal)
 # lubuntu                16.04
-# Linux Mint (Cinnamon)  18.1, 18.2, 19.0
+# Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
 
 set -e
 
@@ -38,40 +38,10 @@ get_lsb_release() {
   fi
 }
 
-get_lsb_release "Kali"          "sana"     "Debian" "jessie"
-get_lsb_release "Kali"          "kali-rolling" "Debian" "jessie"
-get_lsb_release "Sparky Linux"  "Nibiru"   "Debian" "buster"
-get_lsb_release "MX Linux 17"   "Horizon"  "Debian" "stretch"
-get_lsb_release "Linux Mint"    "maya"     "Ubuntu" "precise"
-get_lsb_release "Linux Mint"    "qiana"    "Ubuntu" "trusty"
-get_lsb_release "Linux Mint"    "rafaela"  "Ubuntu" "trusty"
-get_lsb_release "Linux Mint"    "rebecca"  "Ubuntu" "trusty"
-get_lsb_release "Linux Mint"    "rosa"     "Ubuntu" "trusty"
-get_lsb_release "Linux Mint"    "sarah"    "Ubuntu" "xenial"
 get_lsb_release "Linux Mint"    "serena"   "Ubuntu" "xenial"
 get_lsb_release "Linux Mint"    "sonya"    "Ubuntu" "xenial"
-get_lsb_release "Linux Mint"    "sylvia"   "Ubuntu" "xenial"
 get_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
-get_lsb_release "LMDE"          "betsy"    "Debian" "jessie"
-get_lsb_release "elementaryOS"  "luna"     "Ubuntu" "precise"
-get_lsb_release "elementaryOS"  "freya"    "Ubuntu" "trusty"
-get_lsb_release "elementaryOS"  "loki"     "Ubuntu" "xenial"
-get_lsb_release "elementaryOS"  "juno"     "Ubuntu" "bionic"
-get_lsb_release "Trisquel"      "toutatis" "Ubuntu" "precise"
-get_lsb_release "Trisquel"      "belenos"  "Ubuntu" "trusty"
-get_lsb_release "Trisquel"      "flidas"   "Ubuntu" "xenial"
-get_lsb_release "BOSS"          "anokha"   "Debian" "wheezy"
-get_lsb_release "bunsenlabs"    "bunsen-hydrogen" "Debian" "jessie"
-get_lsb_release "bunsenlabs"    "helium"   "Debian" "stretch"
-get_lsb_release "Tanglu"        "chromodoris" "Debian" "jessie"
-get_lsb_release "PureOS"        "green"    "Debian" "sid"
-get_lsb_release "Devuan"        "jessie"   "Debian" "jessie"
-get_lsb_release "Devuan"        "ascii"    "Debian" "stretch"
-get_lsb_release "Devuan"        "ceres"    "Debian" "sid"
-get_lsb_release "Deepin"        "panda"    "Debian" "sid"
-get_lsb_release "Deepin"        "unstable" "Debian" "sid"
-get_lsb_release "Pardus"        "onyedi"   "Debian" "stretch"
-get_lsb_release "Liquid Lemur"  "lemur-3"  "Debian" "stretch"
+get_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
 
 export sl_lsb_release
 
