@@ -4,7 +4,5 @@ set -e
 
 sudo apt install -y python3.6-dev python3-pip python3-setuptools python3-wheel
 
-pip3 install --upgrade pip
-
 # Repo version of awscli is out of date
 pip3 install --user awscli
