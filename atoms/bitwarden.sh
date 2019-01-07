@@ -2,4 +2,4 @@
 
 set -e
 
-sudo snap install -y bitwarden
+sudo snap install bitwarden
