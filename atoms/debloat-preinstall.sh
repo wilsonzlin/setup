@@ -34,7 +34,6 @@ packages_to_remove="\
     mintbackup* \
     mintinstall* \
     mintnanny* \
-    mintupdate* \
     mintupload* \
     mintwelcome* \
     mplayer* \
