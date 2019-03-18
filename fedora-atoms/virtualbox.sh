@@ -2,7 +2,7 @@
 
 set -e
 
-sudo tee /etc/yum.repos.d/virtualbox.repo << EOM
+sudo tee /etc/yum.repos.d/virtualbox.repo << 'EOM'
 [virtualbox]
 name=Fedora $releasever - $basearch - VirtualBox
 baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
