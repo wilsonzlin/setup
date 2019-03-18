@@ -2,8 +2,6 @@
 
 set -e
 
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo rpm --import -
-
 sudo tee -a /etc/yum.repos.d/virtualbox.repo << EOM
 [virtualbox]
 name=Fedora $releasever - $basearch - VirtualBox
@@ -15,7 +13,7 @@ gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
 EOM
 
 sudo dnf install -y binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms qt5-qtx11extras libxkbcommon
-
+sudo dnf check-update
 sudo dnf install -y VirtualBox-6.0
 
 VBOX_VERSION=$(vboxmanage -v)
