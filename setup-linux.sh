@@ -36,13 +36,13 @@ else
 fi
 
 check_platform() {
-  "$python_cmd" -m platform | grep -qi "$0" && echo "1" || echo "0"
+  "$python_cmd" -m platform | grep -qi "$1" && echo "1" || echo "0"
 }
 sl_is_ubuntu="$(check_platform "Ubuntu")"
 sl_is_mint="$(check_platform "LinuxMint")"
 sl_is_fedora="$(check_platform "Fedora")"
 
-if [ $sl_is_ubuntu -eq 0 ] || [ $sl_is_mint -eq 0 ]; then
+if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   atoms_dir_prefix="ubuntu"
 
   get_lsb_release() {
@@ -56,8 +56,16 @@ if [ $sl_is_ubuntu -eq 0 ] || [ $sl_is_mint -eq 0 ]; then
   get_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
   export sl_lsb_release
 
-elif [ $sl_is_fedora -eq 0 ]; then
+  # Prerequisite(s)
+  sudo apt install -y curl wget software-properties-common snapd
+
+elif [ $sl_is_fedora -eq 1 ]; then
   atoms_dir_prefix="fedora"
+
+  # Prerequisite(s)
+  sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
+  sudo dnf install -y snapd
+
 fi
 
 export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
