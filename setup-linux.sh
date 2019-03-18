@@ -29,36 +29,41 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
+if command -v python3; then
+  python_cmd="python3"
+else
+  python_cmd="python"
+fi
+
 check_platform() {
-  python -m platform | grep -qi "$0" && echo "1" || echo "0"
+  "$python_cmd" -m platform | grep -qi "$0" && echo "1" || echo "0"
 }
-sl_is_ubuntu=check_platform "Ubuntu"
-sl_is_mint=check_platform "LinuxMint"
-sl_is_fedora=check_platform "Fedora"
-
-sl_lsb_release="$(lsb_release -s -c)"
-get_lsb_release() {
-  if [ "X${sl_lsb_release}" == "X${2}" ]; then
-    sl_lsb_release="${4}"
-  fi
-}
-
-get_lsb_release "Linux Mint"    "serena"   "Ubuntu" "xenial"
-get_lsb_release "Linux Mint"    "sonya"    "Ubuntu" "xenial"
-get_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
-get_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
-
-export sl_lsb_release
-export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
-export sl_node_version='11'
+sl_is_ubuntu="$(check_platform "Ubuntu")"
+sl_is_mint="$(check_platform "LinuxMint")"
+sl_is_fedora="$(check_platform "Fedora")"
 
 if [ $sl_is_ubuntu -eq 0 ] || [ $sl_is_mint -eq 0 ]; then
   atoms_dir_prefix="ubuntu"
+
+  get_lsb_release() {
+    if [ "X$(lsb_release -s -c)" == "X${2}" ]; then
+      sl_lsb_release="${4}"
+    fi
+  }
+  get_lsb_release "Linux Mint"    "serena"   "Ubuntu" "xenial"
+  get_lsb_release "Linux Mint"    "sonya"    "Ubuntu" "xenial"
+  get_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
+  get_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
+  export sl_lsb_release
+
 elif [ $sl_is_fedora -eq 0 ]; then
   atoms_dir_prefix="fedora"
 fi
 
-for script in "$atoms_dir_prefix"-atoms"/*.sh; do
+export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
+export sl_node_version='11'
+
+for script in "$atoms_dir_prefix"-atoms/*.sh; do
   bash "$script" || break
 done
 
