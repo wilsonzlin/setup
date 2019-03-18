@@ -57,14 +57,13 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   export sl_lsb_release
 
   # Prerequisite(s)
-  sudo apt install -y curl wget software-properties-common snapd
+  sudo apt install -y curl wget software-properties-common
 
 elif [ $sl_is_fedora -eq 1 ]; then
   atoms_dir_prefix="fedora"
 
   # Prerequisite(s)
   sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
-  sudo dnf install -y snapd
 
 fi
 
