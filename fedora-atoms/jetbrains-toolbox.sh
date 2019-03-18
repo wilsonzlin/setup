@@ -4,7 +4,7 @@ set -e
 
 pushd "$( mktemp -d )"
 
-wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.11.4269.tar.gz -O toolbox.tar.gz
+wget "$sl_jetbrains_toolbox_url" -O toolbox.tar.gz
 tar -zxvf toolbox.tar.gz --one-top-level
 mv toolbox/*/jetbrains-toolbox ~/Applications/.
 

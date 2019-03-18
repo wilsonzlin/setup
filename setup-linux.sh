@@ -4,6 +4,7 @@
 # Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal)
 # lubuntu                16.04
 # Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
+# Fedora Workstation     29
 
 set -e
 
@@ -28,8 +29,12 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
-# Get Ubuntu/Debian release name
-# Copied from https://deb.nodesource.com/setup_10.x
+check_platform() {
+  python -m platform | grep -qi "$0" && echo "1" || echo "0"
+}
+sl_is_ubuntu=check_platform "Ubuntu"
+sl_is_mint=check_platform "LinuxMint"
+sl_is_fedora=check_platform "Fedora"
 
 sl_lsb_release="$(lsb_release -s -c)"
 get_lsb_release() {
@@ -44,10 +49,16 @@ get_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
 get_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
 
 export sl_lsb_release
+export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
+export sl_node_version='11'
 
-bash prereq.sh
+if [ $sl_is_ubuntu -eq 0 ] || [ $sl_is_mint -eq 0 ]; then
+  atoms_dir_prefix="ubuntu"
+elif [ $sl_is_fedora -eq 0 ]; then
+  atoms_dir_prefix="fedora"
+fi
 
-for script in atoms/*.sh; do
+for script in "$atoms_dir_prefix"-atoms"/*.sh; do
   bash "$script" || break
 done
 
