@@ -14,8 +14,7 @@ repo_gpgcheck=1
 gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
 EOM
 
-sudo dnf install -y binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms qt5-qtx11extras libxkbcommon
-sudo dnf check-update || true
+sudo dnf install -y binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms qt5-qtx11extras libxkbcommon "kernel-devel-$(uname -r)"
 sudo dnf install -y VirtualBox-6.0
 
 VBOX_VERSION=$(vboxmanage -v)
