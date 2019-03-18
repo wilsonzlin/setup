@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+# Failed status needs to be captured, so don't auto exit on error
 
 # Purge unneeded packages
 packages_to_remove="\
@@ -18,4 +18,6 @@ for pkg in $(echo $packages_to_remove); do
     fi
 done
 
-sudo dnf remove -y $packages_to_remove_filtered
+if [ ! -z "$packages_to_remove_filtered" ]; then
+  sudo dnf remove -y $packages_to_remove_filtered || exit 1
+fi
