@@ -45,15 +45,17 @@ sl_is_fedora="$(check_platform "Fedora")"
 if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   atoms_dir_prefix="ubuntu"
 
-  get_lsb_release() {
+  # Get lsb_release at least once in case it's not an alias.
+  sl_lsb_release="$(lsb_release -s -c)"
+  actual_lsb_release() {
     if [ "X$(lsb_release -s -c)" == "X${2}" ]; then
       sl_lsb_release="${4}"
     fi
   }
-  get_lsb_release "Linux Mint"    "serena"   "Ubuntu" "xenial"
-  get_lsb_release "Linux Mint"    "sonya"    "Ubuntu" "xenial"
-  get_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
-  get_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
+  actual_lsb_release "Linux Mint"    "serena"   "Ubuntu" "xenial"
+  actual_lsb_release "Linux Mint"    "sonya"    "Ubuntu" "xenial"
+  actual_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
+  actual_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
   export sl_lsb_release
 
   # Prerequisite(s)
