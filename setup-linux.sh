@@ -2,6 +2,7 @@
 
 # TESTED ON:
 # Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal)
+# Kubuntu                18.10 (Minimal)
 # lubuntu                16.04
 # Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
 # Fedora Workstation     29
