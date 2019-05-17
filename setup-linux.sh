@@ -29,6 +29,17 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
+# General prerequisite(s)
+mkdir -p "$HOME/Applications"
+mkdir -p "$HOME/bin"
+
+# Make it so that $PATH also includes resolved paths of symlinked dirs in ~/bin.
+cat < 'EOD' >> "$HOME/.profile"
+for d in $(find -L "$HOME/bin" -type d); do
+  PATH="$(realpath "$d"):$PATH"
+done
+EOD
+
 if command -v python3; then
   python_cmd="python3"
 else
@@ -96,6 +107,7 @@ elif [ $sl_is_fedora -eq 1 ]; then
 fi
 
 export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
+export sl_maven_url='http://apache.mirror.amaze.com.au/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz'
 export sl_node_version='11'
 
 for script in "$atoms_dir_prefix"-atoms/*.sh; do
