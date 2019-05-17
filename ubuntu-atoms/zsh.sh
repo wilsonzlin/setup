@@ -4,7 +4,9 @@ set -e
 
 sudo apt install -y zsh
 
-printf '\033[0;31m\033[1m!!! oh-my-zsh installer will automatically launch zsh, exit it to continue setup !!!\n\033[0m'
+# Prevent the cloned repository from having insecure permissions. Failing to do
+# so causes compinit() calls to fail with "command not found: compdef" errors
+# for users with insecure umasks (e.g., "002", allowing group writability).
+umask g-w,o-w
 
-# oh-my-zsh will chsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
