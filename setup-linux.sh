@@ -18,16 +18,15 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 echo ============== REQUIREMENTS ==============
-echo "- A reliable, working Internet connection for the next hour"
+echo "- A reliable Internet connection for the next hour or so"
 echo "- Package sources set to local, fast mirrors"
-echo "- An hour of your free time as user interaction will be required"
 echo
 
 read -p "Do you wish to continue? (y) " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   echo "Setup cancelled"
-  [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+  exit 1
 fi
 
 if command -v python3; then
@@ -49,15 +48,42 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   # Get lsb_release at least once in case it's not an alias.
   sl_lsb_release="$(lsb_release -s -c)"
   actual_lsb_release() {
-    if [ "X$(lsb_release -s -c)" == "X${2}" ]; then
-      sl_lsb_release="${4}"
+    if [ "X$(lsb_release -s -c)" == "X$1" ]; then
+      sl_lsb_release="$2"
     fi
   }
-  actual_lsb_release "Linux Mint"    "serena"   "Ubuntu" "xenial"
-  actual_lsb_release "Linux Mint"    "sonya"    "Ubuntu" "xenial"
-  actual_lsb_release "Linux Mint"    "tara"     "Ubuntu" "bionic"
-  actual_lsb_release "Linux Mint"    "tessa"    "Ubuntu" "bionic"
+  # Use Ubuntu versions to represent Linux Mint versions.
+  actual_lsb_release "tessa"  "bionic"
+  actual_lsb_release "tara"   "bionic"
+  actual_lsb_release "sylvia" "xenial"
+  actual_lsb_release "sonya"  "xenial"
+  actual_lsb_release "serena" "xenial"
+  actual_lsb_release "sarah"  "xenial"
   export sl_lsb_release
+
+  lsb_release_version() {
+    if [ "$sl_lsb_release" == "$1" ]; then
+      sl_lsb_release_version="$2"
+    fi
+  }
+
+  lsb_release_version "disco"   "19.04"
+  lsb_release_version "cosmic"  "18.10"
+  lsb_release_version "bionic"  "18.04"
+  lsb_release_version "artful"  "17.10"
+  lsb_release_version "zesty"   "17.04"
+  lsb_release_version "yakkety" "16.10"
+  lsb_release_version "xenial"  "16.04"
+  lsb_release_version "wily"    "15.10"
+  lsb_release_version "vivid"   "15.04"
+  lsb_release_version "utopic"  "14.10"
+  lsb_release_version "trusty"  "14.04"
+  lsb_release_version "saucy"   "13.10"
+  lsb_release_version "raring"  "13.04"
+  lsb_release_version "quantal" "12.10"
+  export sl_lsb_release_version
+
+  export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
 
   # Prerequisite(s)
   sudo apt install -y curl wget software-properties-common
@@ -67,14 +93,13 @@ elif [ $sl_is_fedora -eq 1 ]; then
 
   # Prerequisite(s)
   sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
-
 fi
 
 export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
 export sl_node_version='11'
 
 for script in "$atoms_dir_prefix"-atoms/*.sh; do
-  bash "$script" || break
+  bash "$script" || exit 1
 done
 
 echo
