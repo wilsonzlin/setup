@@ -8,4 +8,8 @@ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
 
 sudo apt update
 
-sudo apt-get install cassandra
+sudo apt-get install cassandra python-pip
+
+pip install cassandra-driver
+
+echo 'export CQLSH_NO_BUNDLED=TRUE' >> "$HOME/.profile"
