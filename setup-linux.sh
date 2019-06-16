@@ -96,7 +96,7 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   export sl_lsb_release_version
 
   export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
-  export sl_mysql_apt_url="https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb"
+  export sl_mysql_apt_url="https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb"
 
   # Prerequisites.
   sudo apt install -y curl wget software-properties-common
