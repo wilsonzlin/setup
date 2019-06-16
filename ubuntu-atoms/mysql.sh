@@ -5,7 +5,7 @@ set -e
 pushd "$( mktemp -d )"
 
 # MySQL Workbench and Server
-wget "https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb" -O mysql-apt.deb
+wget "$sl_mysql_apt_url" -O mysql-apt.deb
 sudo dpkg -i mysql-apt.deb || true
 
 sudo apt update
