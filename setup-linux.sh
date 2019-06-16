@@ -115,6 +115,12 @@ for script in "$atoms_dir_prefix"-atoms/*.sh; do
   bash "$script" || exit 1
 done
 
+if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
+  # Postinstall update and cleanup.
+  sudo apt dist-upgrade
+  sudo apt autoremove
+fi
+
 echo
 echo "================================================="
 echo "Restart your device to complete the setup"
