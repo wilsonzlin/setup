@@ -20,6 +20,7 @@ fi
 echo ============== REQUIREMENTS ==============
 echo "- A reliable Internet connection for the next hour or so"
 echo "- Package sources set to local, fast mirrors"
+echo "- Update manager disabled to prevent potential conflicts during process"
 echo
 
 read -p "Do you wish to continue? (y) " -n 1 -r
