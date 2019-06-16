@@ -9,7 +9,7 @@ curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
 sudo apt update
 
 # Yes, this requires Python 2's pip.
-sudo apt-get install cassandra python-pip
+sudo apt-get install -y cassandra python-pip
 
 pip install cassandra-driver
 
