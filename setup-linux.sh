@@ -29,7 +29,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
-# General prerequisite(s)
+# General prerequisites.
 mkdir -p "$HOME/Applications"
 mkdir -p "$HOME/bin"
 
@@ -96,13 +96,13 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
 
   export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
 
-  # Prerequisite(s)
+  # Prerequisites.
   sudo apt install -y curl wget software-properties-common
 
 elif [ $sl_is_fedora -eq 1 ]; then
   atoms_dir_prefix="fedora"
 
-  # Prerequisite(s)
+  # Prerequisites.
   sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
 fi
 
