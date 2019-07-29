@@ -120,8 +120,8 @@ done
 
 if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   # Postinstall update and cleanup.
-  sudo apt dist-upgrade
-  sudo apt autoremove
+  sudo apt dist-upgrade -y
+  sudo apt autoremove -y
 fi
 
 echo

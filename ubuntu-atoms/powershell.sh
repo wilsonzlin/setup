@@ -2,4 +2,4 @@
 
 set -e
 
-sudo snap install -y --classic powershell
+sudo snap install --classic powershell
