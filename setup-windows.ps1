@@ -68,6 +68,8 @@ choco install -y origin
 choco install -y php
 choco install -y python2
 choco install -y python3
+choco install -y r.project
+choco install -y r.studio
 choco install -y qbittorrent
 choco install -y rust
 choco install -y steam
