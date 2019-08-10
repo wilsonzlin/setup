@@ -66,6 +66,7 @@ choco install -y office365proplus
 choco install -y openjdk
 choco install -y origin
 choco install -y php
+choco install -y putty.install
 choco install -y python2
 choco install -y python3
 choco install -y r.project
