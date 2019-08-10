@@ -78,3 +78,4 @@ choco install -y uplay
 choco install -y visualstudio2017buildtools
 choco install -y vlc
 choco install -y vscode
+choco install -y zerotier-one
