@@ -73,6 +73,7 @@ choco install -y qbittorrent
 choco install -y r.project
 choco install -y r.studio
 choco install -y rust
+choco install -y sendtokindle
 choco install -y spacesniffer
 choco install -y steam
 choco install -y uplay
