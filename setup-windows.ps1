@@ -69,10 +69,11 @@ choco install -y php
 choco install -y putty.install
 choco install -y python2
 choco install -y python3
+choco install -y qbittorrent
 choco install -y r.project
 choco install -y r.studio
-choco install -y qbittorrent
 choco install -y rust
+choco install -y spacesniffer
 choco install -y steam
 choco install -y uplay
 choco install -y visualstudio2017buildtools
