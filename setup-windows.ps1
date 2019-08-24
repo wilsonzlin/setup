@@ -64,7 +64,6 @@ choco install -y nodejs.install
 choco install -y notepadplusplus.install
 choco install -y office365proplus
 choco install -y openjdk
-choco install -y origin
 choco install -y php
 choco install -y putty.install
 choco install -y python2
@@ -75,8 +74,6 @@ choco install -y r.studio
 choco install -y rust
 choco install -y sendtokindle
 choco install -y spacesniffer
-choco install -y steam
-choco install -y uplay
 choco install -y visualstudio2017buildtools
 choco install -y vlc
 choco install -y vscode
