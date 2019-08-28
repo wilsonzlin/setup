@@ -59,6 +59,7 @@ choco install -y imageglass
 choco install -y jetbrainstoolbox
 choco install -y llvm
 choco install -y lua
+choco install -y miktex.install
 choco install -y mpv.install
 choco install -y nodejs.install
 choco install -y notepadplusplus.install
