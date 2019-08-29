@@ -52,6 +52,7 @@ choco install -y dotnetcore-sdk
 choco install -y eraser
 choco install -y everything --params "/folder-context-menu /run-on-system-startup"
 choco install -y firefox
+choco install -y gimp
 choco install -y git.install
 choco install -y golang
 choco install -y googlechrome
