@@ -76,6 +76,8 @@ choco install -y r.studio
 choco install -y rust
 choco install -y sendtokindle
 choco install -y spacesniffer
+choco install -y sublimetext3
+choco install -y terminus
 choco install -y visualstudio2017buildtools
 choco install -y vlc
 choco install -y vscode
