@@ -55,7 +55,7 @@ sl_is_mint="$(check_platform "LinuxMint")"
 sl_is_fedora="$(check_platform "Fedora")"
 
 if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
-  atoms_dir_prefix="ubuntu"
+  atoms_dir="ubuntu"
 
   # Get lsb_release at least once in case it's not an alias.
   sl_lsb_release="$(lsb_release -s -c)"
@@ -104,7 +104,7 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   sudo apt install -y curl wget software-properties-common
 
 elif [ $sl_is_fedora -eq 1 ]; then
-  atoms_dir_prefix="fedora"
+  atoms_dir="fedora"
 
   # Prerequisites.
   sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
@@ -118,7 +118,7 @@ export sl_maven_url='http://apache.mirror.amaze.com.au/maven/maven-3/3.6.1/binar
 export sl_hub_url='https://github.com/github/hub/releases/download/v2.12.1/hub-linux-amd64-2.12.1.tgz'
 export sl_node_version='11'
 
-for script in "$atoms_dir_prefix"-atoms/*.sh; do
+for script in "$atoms_dir"/*.sh; do
   bash "$script" || exit 1
 done
 
