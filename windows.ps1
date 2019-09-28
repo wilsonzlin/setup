@@ -69,6 +69,7 @@ choco install -y nodejs.install
 choco install -y notepadplusplus.install
 choco install -y office365proplus
 choco install -y openjdk
+choco install -y origin
 choco install -y php
 choco install -y putty.install
 choco install -y python2
@@ -79,8 +80,10 @@ choco install -y r.studio
 choco install -y rust
 choco install -y sendtokindle
 choco install -y spacesniffer
+choco install -y steam
 choco install -y sublimetext3
 choco install -y terminus
+choco install -y uplay
 choco install -y visualstudio2019enterprise --package-parameters "--config $PSScriptRoot\windows\vsenterprise.vsconfig"
 choco install -y vlc
 choco install -y vscode
