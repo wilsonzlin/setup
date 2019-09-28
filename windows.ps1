@@ -46,8 +46,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName DirectPlay -All -NoRestart
 # Install Chocolatey.
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-# Set timeout to 24 hours.
-choco config set --name commandExecutionTimeoutSeconds --value 86400
+# Increase/disable timeouts.
+choco config set --name commandExecutionTimeoutSeconds --value 0
+choco config set --name webRequestTimeoutSeconds --value 120
 
 # Install programs.
 choco install -y 7zip.install
