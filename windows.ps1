@@ -88,7 +88,7 @@ choco install -y steam
 choco install -y sublimetext3
 choco install -y terminus
 choco install -y uplay
-choco install -y visualstudio2019enterprise --package-parameters "--config $PSScriptRoot\windows\vsenterprise.vsconfig"
+choco install -y visualstudio2017enterprise --package-parameters "--config $PSScriptRoot\windows\vsenterprise.vsconfig"
 choco install -y vlc
 choco install -y vscode
 choco install -y zerotier-one
