@@ -57,6 +57,7 @@ choco install -y dart-sdk
 choco install -y dotnetcore-sdk
 choco install -y eraser
 choco install -y everything --params "/folder-context-menu /run-on-system-startup"
+choco install -y fiddler
 choco install -y firefox
 choco install -y flutter
 choco install -y gimp
@@ -91,4 +92,5 @@ choco install -y uplay
 choco install -y visualstudio2017enterprise --package-parameters "--config $PSScriptRoot\windows\vsenterprise.vsconfig"
 choco install -y vlc
 choco install -y vscode
+choco install -y wireshark
 choco install -y zerotier-one
