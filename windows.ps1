@@ -55,6 +55,7 @@ choco install -y 7zip.install
 choco install -y autohotkey.install
 choco install -y dart-sdk
 choco install -y dotnetcore-sdk
+choco install -y dropbox
 choco install -y eraser
 choco install -y everything --params "/folder-context-menu /run-on-system-startup"
 choco install -y fiddler
