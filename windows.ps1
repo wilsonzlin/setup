@@ -63,6 +63,7 @@ choco install -y firefox
 choco install -y flutter
 choco install -y gimp
 choco install -y git.install
+choco install -y github-desktop
 choco install -y golang
 choco install -y googlechrome
 choco install -y imageglass
@@ -87,6 +88,7 @@ choco install -y rust
 choco install -y sendtokindle
 choco install -y spacesniffer
 choco install -y steam
+choco install -y stubby
 choco install -y sublimetext3
 choco install -y terminus
 choco install -y uplay
