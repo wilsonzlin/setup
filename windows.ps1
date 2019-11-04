@@ -61,6 +61,7 @@ choco install -y everything --params "/folder-context-menu /run-on-system-startu
 choco install -y fiddler
 choco install -y firefox
 choco install -y flutter
+choco install -y fzf
 choco install -y gimp
 choco install -y git.install
 choco install -y github-desktop
@@ -97,3 +98,6 @@ choco install -y vlc
 choco install -y vscode
 choco install -y wireshark
 choco install -y zerotier-one
+
+# PowerShell extensions.
+Install-Module -Name PSFzf -AcceptLicense
