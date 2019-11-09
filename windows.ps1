@@ -9,6 +9,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 # Increase/disable timeouts.
 choco config set --name commandExecutionTimeoutSeconds --value 0
 choco config set --name webRequestTimeoutSeconds --value 120
+choco config set --usePackageExitCodes --value $false
 
 foreach ($script in Get-Content -Path $AtomsListFile) {
   & "$PSScriptRoot/windows/$script.ps1"
