@@ -1,0 +1,1 @@
+choco install -y office365proplus

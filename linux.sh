@@ -17,6 +17,12 @@ if [[ $EUID -eq 0 ]]; then
   exit 1
 fi
 
+atoms_to_run="$1"
+if [ ! -f "$atoms_to_run" ]; then
+  echo "File containing atoms to run not provided"
+  exit 2
+fi
+
 echo ============== REQUIREMENTS ==============
 echo "- A reliable Internet connection for the next hour or so"
 echo "- Package sources set to local, fast mirrors"
@@ -119,9 +125,9 @@ export sl_maven_url='http://apache.mirror.amaze.com.au/maven/maven-3/3.6.1/binar
 export sl_hub_url='https://github.com/github/hub/releases/download/v2.12.1/hub-linux-amd64-2.12.1.tgz'
 export sl_node_version='11'
 
-for script in "$atoms_dir"/*.sh; do
-  bash "$script" || exit 1
-done
+while IFS="" read -r script || [ -n "$script" ] ; do
+  bash "$atoms_dir/$script.sh" || exit 1
+done < "$atoms_to_run"
 
 if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   # Postinstall update and cleanup.

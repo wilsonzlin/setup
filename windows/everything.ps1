@@ -1,0 +1,1 @@
+choco install -y everything --params "/folder-context-menu /run-on-system-startup"
