@@ -123,7 +123,7 @@ export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrain
 export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz'
 export sl_maven_url='http://apache.mirror.amaze.com.au/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz'
 export sl_hub_url='https://github.com/github/hub/releases/download/v2.12.1/hub-linux-amd64-2.12.1.tgz'
-export sl_node_version='11'
+export sl_node_version='13'
 
 while IFS="" read -r script || [ -n "$script" ] ; do
   bash "$atoms_dir/$script.sh" || exit 1
