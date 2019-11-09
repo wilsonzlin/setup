@@ -1,4 +1,4 @@
 choco install -y fzf
 
 # PowerShell extensions.
-Install-Module -Name PSFzf -AcceptLicense
+Install-Module -Name PSFzf -Scope AllUsers
