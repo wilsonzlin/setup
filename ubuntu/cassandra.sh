@@ -11,6 +11,8 @@ sudo apt update
 # Yes, this requires Python 2's pip.
 sudo apt-get install -y cassandra python-pip
 
+sudo systemctl --now disable cassandra
+
 pip install cassandra-driver
 
 echo 'export CQLSH_NO_BUNDLED=TRUE' >> "$HOME/.profile"
