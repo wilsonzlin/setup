@@ -11,7 +11,7 @@ choco config set --name commandExecutionTimeoutSeconds --value 0
 choco config set --name webRequestTimeoutSeconds --value 120
 choco config set --usePackageExitCodes --value $false
 
-Set-PSRepository -Name PSGallery -SourceLocation https://www.powershellgallery.com/api/v2/ -InstallationPolicy Trusted
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
 foreach ($script in Get-Content -Path $AtomsListFile) {
   & "$PSScriptRoot/windows/$script.ps1"
