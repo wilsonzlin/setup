@@ -103,6 +103,8 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
 
   export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
   export sl_mysql_apt_url="https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb"
+  export sl_bat_url="https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb"
+  export sl_delta_url="https://github.com/dandavison/delta/releases/download/0.0.14/delta_0.0.14_amd64.deb"
   # This is the RStudio Desktop package for Ubuntu 18 64-bit.
   export sl_rstudio_url="https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1335-amd64.deb"
 
