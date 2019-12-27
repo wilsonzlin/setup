@@ -43,7 +43,7 @@ mkdir -p "$HOME/bin"
 # Make it so that $PATH also includes resolved paths of symlinked dirs in ~/bin.
 cat << 'EOD' >> "$HOME/.profile"
 for d in $(find -L "$HOME/bin" -type d); do
-  PATH="$(realpath "$d"):$PATH"
+  export PATH="$(realpath "$d"):$PATH"
 done
 EOD
 
