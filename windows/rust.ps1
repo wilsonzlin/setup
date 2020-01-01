@@ -1,1 +1,1 @@
-choco install -y rust
+choco install -y rust-ms
