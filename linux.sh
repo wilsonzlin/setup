@@ -9,7 +9,7 @@
 
 set -e
 
-cd "$(dirname "$0")"
+pushd "$(dirname "$0")"
 
 if [[ $EUID -eq 0 ]]; then
   echo "This script should not be run using sudo or as the root user"
@@ -127,7 +127,7 @@ export sl_maven_url='https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries
 export sl_hub_url='https://github.com/github/hub/releases/download/v2.12.1/hub-linux-amd64-2.12.1.tgz'
 export sl_node_version='13'
 
-while IFS="" read -r script || [ -n "$script" ] ; do
+while IFS="" read -r script || [ -n "$script" ]; do
   bash "$atoms_dir/$script.sh" || exit 1
 done < "$atoms_to_run"
 
@@ -143,4 +143,4 @@ echo "Restart your device to complete the setup"
 echo "================================================="
 echo
 
-exit 0
+popd
