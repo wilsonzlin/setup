@@ -102,11 +102,11 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   export sl_lsb_release_version
 
   export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
-  export sl_mysql_apt_url="https://dev.mysql.com/get/mysql-apt-config_0.8.13-1_all.deb"
+  export sl_mysql_apt_url="https://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb"
   export sl_bat_url="https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb"
-  export sl_delta_url="https://github.com/dandavison/delta/releases/download/0.0.14/delta_0.0.14_amd64.deb"
+  export sl_delta_url="https://github.com/dandavison/delta/releases/download/0.0.16/delta_0.0.16_amd64.deb"
   # This is the RStudio Desktop package for Ubuntu 18 64-bit.
-  export sl_rstudio_url="https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.1335-amd64.deb"
+  export sl_rstudio_url="https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb"
 
   # Prerequisites.
   sudo apt install -y curl wget software-properties-common
@@ -118,13 +118,13 @@ elif [ $sl_is_fedora -eq 1 ]; then
   sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
 fi
 
-export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/download/v3.9.1/protoc-3.9.1-linux-x86_64.zip'
-export sl_flutter_url='https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.9.1+hotfix.2-stable.tar.xz'
+export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/download/v3.11.4/protoc-3.11.4-linux-x86_64.zip'
+export sl_flutter_url='https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.8-stable.tar.xz'
 export sl_ripgrep_url='https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb'
-export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.13.4801.tar.gz'
-export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-hadoop2.7.tgz'
+export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.16.6319.tar.gz'
+export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz'
 export sl_maven_url='https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'
-export sl_hub_url='https://github.com/github/hub/releases/download/v2.12.1/hub-linux-amd64-2.12.1.tgz'
+export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.1/hub-linux-amd64-2.14.1.tgz'
 export sl_node_version='13'
 
 while IFS="" read -r script || [ -n "$script" ]; do
