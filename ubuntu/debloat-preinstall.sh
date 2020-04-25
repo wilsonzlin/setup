@@ -2,12 +2,11 @@
 
 set -e
 
-# Purge unneeded packages
-# Purging libreoffice* will break Linux Mint's UI
-# gnome-control-center requires gnome-user-share and
-#   a few libtotem* packages so don't purge *totem*
-# cheese is heavily integrated into older versions of
-#   Ubuntu so can't purge globally (it's also useful)
+# Purge unneeded packages.
+# Purging `libreoffice*` will break Linux Mint's UI.
+# `gnome-control-center` requires `gnome-user-share` and a few `libtotem*` packages so don't purge `totem*`.
+# `cheese` is heavily integrated into older versions of Ubuntu so can't purge globally (it's also useful).
+# Package names ending with an `*` will be interpreted as a regex matching any package containing the name (excluding `*`) as a substring, while those without will ony match exact complete names of packages.
 packages_to_remove="\
     abiword* \
     aisleriot* \
@@ -42,7 +41,7 @@ packages_to_remove="\
     pidgin* \
     pix* \
     remmina* \
-    *rhythmbox* \
+    rhythmbox* \
     shotwell* \
     simple-scan* \
     sylpheed* \
@@ -62,7 +61,7 @@ packages_to_remove="\
     xfburn* \
     xpad \
     xplayer* \
-    *xscreensaver* \
+    xscreensaver* \
     xviewer* \
 "
 
