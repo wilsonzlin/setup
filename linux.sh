@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 
 # TESTED ON:
-# Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal)
+# Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal), 19.10 (Minimal)
 # Kubuntu                18.10 (Minimal)
 # lubuntu                16.04
 # Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
 # Fedora Workstation     29
 
-set -e
+set -eu
+shopt -s nullglob
+
+# Get absolute path before changing directory.
+atoms_to_run="$(realpath "$1")"
+if [ ! -f "$atoms_to_run" ]; then
+  echo "File containing atoms to run not provided"
+  exit 2
+fi
 
 pushd "$(dirname "$0")"
 
@@ -15,12 +23,6 @@ if [[ $EUID -eq 0 ]]; then
   echo "This script should not be run using sudo or as the root user"
   echo "Sudo commands will be run as necessary, but some actions require them to be run as you"
   exit 1
-fi
-
-atoms_to_run="$1"
-if [ ! -f "$atoms_to_run" ]; then
-  echo "File containing atoms to run not provided"
-  exit 2
 fi
 
 echo ============== REQUIREMENTS ==============
@@ -54,7 +56,12 @@ else
 fi
 
 check_platform() {
-  "$python_cmd" -m platform | grep -qi "$1" && echo "1" || echo "0"
+  if [ -f /etc/os-release ]; then
+    [[ "$(awk -F= '/^NAME/{print $2}' /etc/os-release | tr -d '"' )" -eq "$1" ]] && echo "1" || echo "0"
+  else
+    # This does not seem to work on Ubuntu 20.04, as no "Ubuntu" appears in the output.
+    "$python_cmd" -m platform | grep -qi "$1" && echo "1" || echo "0"
+  fi
 }
 sl_is_ubuntu="$(check_platform "Ubuntu")"
 sl_is_mint="$(check_platform "LinuxMint")"
