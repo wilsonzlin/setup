@@ -69,9 +69,14 @@ packages_to_remove="\
 packages_to_remove_filtered=""
 
 for pkg in $(echo $packages_to_remove); do
-    output="$(sudo apt list --installed "$pkg" | wc -l)"
+    if apt --version | grep -q "2."; then
+      query="$([[ "$pkg" == *'*' ]] && echo "?name(${pkg%?})" || echo "?exact-name($pkg)")"
+    else
+      query="$pkg"
+    fi
+    output="$(sudo apt list --installed "$query" | wc -l)"
     if [ "$output" -gt 1 ]; then
-        packages_to_remove_filtered="$packages_to_remove_filtered $pkg"
+        packages_to_remove_filtered="$packages_to_remove_filtered $query"
     fi
 done
 

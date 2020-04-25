@@ -7,7 +7,7 @@
 # Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
 # Fedora Workstation     29
 
-set -eu
+set -e
 shopt -s nullglob
 
 # Get absolute path before changing directory.
@@ -43,6 +43,7 @@ mkdir -p "$HOME/Applications"
 mkdir -p "$HOME/bin"
 
 # Make it so that $PATH also includes resolved paths of symlinked dirs in ~/bin.
+# TODO Put in file to avoid repeated additions.
 cat << 'EOD' >> "$HOME/.profile"
 for d in $(find -L "$HOME/bin" -type d); do
   export PATH="$(realpath "$d"):$PATH"
