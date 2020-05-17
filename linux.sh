@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TESTED ON:
+# Only tested against Ubuntu 20.04, but should work with minor tweaks on:
 # Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal), 19.10 (Minimal)
 # Kubuntu                18.10 (Minimal)
 # lubuntu                16.04
@@ -9,13 +9,6 @@
 
 set -e
 shopt -s nullglob
-
-# Get absolute path before changing directory.
-atoms_to_run="$(realpath "$1")"
-if [ ! -f "$atoms_to_run" ]; then
-  echo "File containing atoms to run not provided"
-  exit 2
-fi
 
 pushd "$(dirname "$0")"
 
@@ -43,12 +36,15 @@ mkdir -p "$HOME/Applications"
 mkdir -p "$HOME/bin"
 
 # Make it so that $PATH also includes resolved paths of symlinked dirs in ~/bin.
-# TODO Put in file to avoid repeated additions.
-cat << 'EOD' >> "$HOME/.profile"
+# Put in file to avoid repeated additions.
+if [ ! -f "$HOME/.profile.bindirs" ]; then
+  cat << 'EOD' >> "$HOME/.profile.bindirs"
 for d in $(find -L "$HOME/bin" -type d); do
   export PATH="$(realpath "$d"):$PATH"
 done
 EOD
+  echo 'source "$HOME/.profile.bindirs"' >> "$HOME/.profile"
+fi
 
 if command -v python3; then
   python_cmd="python3"
@@ -136,12 +132,16 @@ export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.1/hub-l
 export sl_clang_url='https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz'
 export sl_node_version='13'
 
-while IFS="" read -r script || [ -n "$script" ]; do
-  bash "$atoms_dir/$script.sh" || exit 1
-done < "$atoms_to_run"
+echo 'Now reading from stdin for list of atoms...'
+while read line; do
+  for script in $line; do
+    bash "$atoms_dir/$script.sh" || exit 1
+    echo "Processed $script"
+  done
+done
 
 if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
-  # Postinstall update and cleanup.
+  # Post-install update and cleanup.
   sudo apt dist-upgrade -y
   sudo apt autoremove -y
 fi
