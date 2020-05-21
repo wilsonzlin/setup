@@ -24,13 +24,6 @@ echo "- Package sources set to local, fast mirrors"
 echo "- Update manager disabled to prevent potential conflicts during process"
 echo
 
-read -p "Do you wish to continue? (y) " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-  echo "Setup cancelled"
-  exit 1
-fi
-
 # General prerequisites.
 mkdir -p "$HOME/Applications"
 mkdir -p "$HOME/bin"
