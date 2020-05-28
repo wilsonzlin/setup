@@ -122,7 +122,6 @@ export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrain
 export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz'
 export sl_maven_url='https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'
 export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.1/hub-linux-amd64-2.14.1.tgz'
-export sl_clang_url='https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz'
 export sl_node_version='14'
 
 echo 'Now reading from stdin for list of atoms...'
