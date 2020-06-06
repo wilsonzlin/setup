@@ -1,1 +1,1 @@
-choco install -y ffmpeg.install
+choco install -y ffmpeg
