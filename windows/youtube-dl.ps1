@@ -1,1 +1,1 @@
-choco install -y youtube-dl.install
+choco install -y youtube-dl
