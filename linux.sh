@@ -122,6 +122,7 @@ export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrain
 export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz'
 export sl_maven_url='https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'
 export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.1/hub-linux-amd64-2.14.1.tgz'
+export sl_gitui_url='https://github.com/extrawurst/gitui/releases/download/v0.7.0/gitui-linux-musl.tar.gz'
 export sl_node_version='14'
 
 echo 'Now reading from stdin for list of atoms...'
