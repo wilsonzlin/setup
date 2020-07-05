@@ -104,6 +104,8 @@ if [ $sl_is_ubuntu -eq 1 ] || [ $sl_is_mint -eq 1 ]; then
   export sl_delta_url="https://github.com/dandavison/delta/releases/download/0.1.1/git-delta_0.1.1_amd64.deb"
   # This is the RStudio Desktop package for Ubuntu 18 64-bit.
   export sl_rstudio_url="https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb"
+  export sl_foundationdb_clients_url="https://www.foundationdb.org/downloads/6.2.19/ubuntu/installers/foundationdb-clients_6.2.19-1_amd64.deb"
+  export sl_foundationdb_url="https://www.foundationdb.org/downloads/6.2.19/ubuntu/installers/foundationdb-server_6.2.19-1_amd64.deb"
 
   # Prerequisites.
   sudo apt install -y curl wget software-properties-common
