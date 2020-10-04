@@ -84,6 +84,7 @@ export sl_lsb_release_version
 export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz'
 export sl_bat_url='https://github.com/sharkdp/bat/releases/download/v0.15.4/bat_0.15.4_amd64.deb'
 export sl_delta_url='https://github.com/dandavison/delta/releases/download/0.4.3/git-delta_0.4.3_amd64.deb'
+export sl_docker_compose_url="https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)"
 export sl_dotnetcore_sdk_url='https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb'
 export sl_flutter_url='https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.1-stable.tar.xz'
 export sl_foundationdb_clients_url='https://www.foundationdb.org/downloads/6.2.25/ubuntu/installers/foundationdb-clients_6.2.25-1_amd64.deb'
