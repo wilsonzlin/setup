@@ -85,7 +85,7 @@ export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.5/spa
 export sl_bat_url='https://github.com/sharkdp/bat/releases/download/v0.15.4/bat_0.15.4_amd64.deb'
 export sl_delta_url='https://github.com/dandavison/delta/releases/download/0.4.3/git-delta_0.4.3_amd64.deb'
 export sl_docker_compose_url="https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)"
-export sl_dotnetcore_sdk_url='https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb'
+export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
 export sl_flutter_url='https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.1-stable.tar.xz'
 export sl_foundationdb_clients_url='https://www.foundationdb.org/downloads/6.2.25/ubuntu/installers/foundationdb-clients_6.2.25-1_amd64.deb'
 export sl_foundationdb_url='https://www.foundationdb.org/downloads/6.2.25/ubuntu/installers/foundationdb-server_6.2.25-1_amd64.deb'
@@ -94,12 +94,14 @@ export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.1/hub-l
 export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7455.tar.gz'
 export sl_maven_url='https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'
 export sl_mysql_apt_url='https://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb'
-export sl_node_version='14'
+export sl_node_version='15'
 export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/download/v3.12.1/protoc-3.12.1-linux-x86_64.zip'
 export sl_ripgrep_url='https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb'
 export sl_rstudio_url='https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb'
 
+export DEBIAN_FRONTEND=noninteractive
 # Prerequisites.
+sudo apt update
 sudo apt install -y curl wget software-properties-common
 
 echo 'Now reading from stdin for list of atoms...'
