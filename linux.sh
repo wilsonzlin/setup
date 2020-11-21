@@ -99,7 +99,6 @@ export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/dow
 export sl_ripgrep_url='https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb'
 export sl_rstudio_url='https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb'
 
-export DEBIAN_FRONTEND=noninteractive
 # Prerequisites.
 sudo apt update
 sudo apt install -y curl wget software-properties-common
@@ -113,7 +112,7 @@ while read line; do
 done
 
 # Post-install update and cleanup.
-sudo apt dist-upgrade -y
+sudo UCF_FORCE_CONFOLD=1 DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold dist-upgrade -y
 sudo apt autoremove -y
 
 echo
