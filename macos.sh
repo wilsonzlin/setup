@@ -10,18 +10,16 @@ if [[ $EUID -eq 0 ]]; then
   exit 1
 fi
 
-atoms_to_run="$1"
-if [ ! -f "$atoms_to_run" ]; then
-  echo "File containing atoms to run not provided"
-  exit 2
-fi
-
 xcode-select --install
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-while IFS="" read -r script || [ -n "$script" ]; do
-  bash "macos/$script.sh" || exit 1
-done < "$atoms_to_run"
+echo 'Now reading from stdin for list of atoms...'
+while read line; do
+  for script in $line; do
+    bash "macos/$script.sh" || exit 1
+    echo "Processed $script"
+  done
+done
 
 popd
