@@ -83,3 +83,6 @@ sudo apt autoremove -y
 
 # Disable unneeded services from running automatically at startup
 sudo systemctl disable cups-browsed.service || true
+
+systemctl --user mask tracker-store.service tracker-miner-fs.service tracker-miner-rss.service tracker-extract.service tracker-miner-apps.service tracker-writeback.service
+tracker reset --hard
