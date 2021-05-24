@@ -2,7 +2,22 @@
 
 set -e
 
-sudo apt install -y docker.io
+# Official docs suggest using their repo over standard repo's legacy docker.io package.
+# However, more recent advice for docker.io suggest it's better as it's now kept up to date, and more modular and compact.
+# However however, docker.io installation doesn't work as reliably, with conflicting/mismatched dependency versions.
+sudo apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $sl_lsb_release stable" | sudo tee /etc/apt/sources.list.d/docker.list
+
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 sudo usermod -a -G docker "$USER"
 
