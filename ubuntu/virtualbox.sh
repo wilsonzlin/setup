@@ -9,7 +9,7 @@ curl -L https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key 
 
 sudo apt update
 
-sudo apt install -y virtualbox-6.0 dkms
+sudo apt install -y virtualbox-6.1 dkms
 
 VBOX_VERSION=$(vboxmanage -v)
 VBOX_VERSION_POINT=$(echo "$VBOX_VERSION" | cut -d 'r' -f 1)
