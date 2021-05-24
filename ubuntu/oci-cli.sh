@@ -2,6 +2,12 @@
 
 set -e
 
+pushd "$(mktemp -d)" > /dev/null
+
 sudo apt install -y python3
 
-bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)" --accept-all-defaults
+wget 'https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh'
+
+bash ./install.sh --accept-all-defaults
+
+popd > /dev/null
