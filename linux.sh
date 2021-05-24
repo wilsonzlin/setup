@@ -100,6 +100,8 @@ export sl_rstudio_url='https://download1.rstudio.org/desktop/bionic/amd64/rstudi
 # Prerequisites.
 sudo apt update
 sudo apt install -y curl wget software-properties-common
+# Upgrade all existing packages to avoid dependency tree resolution conflicts later.
+sudo apt dist-upgrade -y
 
 echo 'Now reading from stdin for list of atoms...'
 while read line; do
