@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
-# Only tested against Ubuntu 20.04, but should work with minor tweaks on:
-# Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal), 19.10 (Minimal)
-# Kubuntu                18.10 (Minimal)
-# lubuntu                16.04
-# Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
+# TESTED ON
+# - Ubuntu 20.04.0 (Minimal)
+#
+# DOES NOT WORK ON
+# - Ubuntu 20.04.2 (Minimal): preinstalled packages have unresolvable dependency conflict with libc6 versions.
+#
+# MIGHT WORK WITH MINOR TWEAKS ON:
+# - Ubuntu                 16.04.3, 17.10.1, 18.04 (Minimal), 19.10 (Minimal)
+# - Kubuntu                18.10 (Minimal)
+# - lubuntu                16.04
+# - Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
 
 set -e
 shopt -s nullglob
