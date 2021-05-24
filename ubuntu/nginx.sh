@@ -4,7 +4,7 @@ set -e
 
 sudo add-apt-repository -y ppa:nginx/stable
 
-sudo apt-get update
+sudo apt update
 
 sudo apt install -y nginx
 

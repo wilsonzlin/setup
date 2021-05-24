@@ -4,7 +4,7 @@ set -e
 
 pushd "$(mktemp -d)"
 
-sudo apt-get install -y imagemagick ttyrec gcc x11-apps make git
+sudo apt install -y imagemagick ttyrec gcc x11-apps make git
 
 git clone https://github.com/icholy/ttygif.git
 

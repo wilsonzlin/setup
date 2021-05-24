@@ -2,4 +2,4 @@
 
 set -e
 
-sudo apt install -y openjdk-11-jdk
+sudo apt install -y openjdk-16-jdk
