@@ -12,8 +12,7 @@ cd ttygif
 make
 sudo make install
 
-# Make sure `export WINDOWID=$(xdotool getwindowfocus)` is in the non-login shell file.
-# This isn't set here as some users override the file later with their own synchronised version.
+echo 'export WINDOWID=$(xdotool getwindowfocus)' >> "$HOME/.profile"
 
 # ImageMagick may run out of resources when running ttygif, and it's possible to increase/remove
 # resource limits; see https://github.com/ImageMagick/ImageMagick/issues/396 for more details.

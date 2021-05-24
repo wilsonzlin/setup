@@ -2,7 +2,10 @@
 
 set -e
 
-sudo apt install -y python3-dev python3-pip python3-setuptools python3-wheel
+pushd "$(mktemp -d)" > /dev/null
 
-# Repo version of awscli is out of date
-pip3 install --user awscli aws-shell
+curl -o awscliv2.zip 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
+unzip awscliv2.zip
+sudo ./aws/install
+
+popd > /dev/null

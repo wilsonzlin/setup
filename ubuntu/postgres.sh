@@ -6,7 +6,7 @@ echo "deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ ${sl_lsb_release
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt update
-sudo apt install -y postgresql libpq-dev
+sudo apt install -y postgresql libpq-dev python3-pip
 
 pip3 install pgcli
 sudo apt install -y pspg

@@ -2,4 +2,4 @@
 
 set -e
 
-sudo apt install -y lua5.1
+sudo apt install -y lua5.3
