@@ -38,12 +38,6 @@ EOD
   echo 'source "$HOME/.zshenv.bindirs"' >> "$HOME/.zshenv"
 fi
 
-if command -v python3; then
-  python_cmd="python3"
-else
-  python_cmd="python"
-fi
-
 # Get lsb_release at least once in case it's not an alias.
 sl_lsb_release="$(lsb_release -s -c)"
 actual_lsb_release() {
@@ -84,12 +78,12 @@ lsb_release_version "saucy"   "13.10"
 lsb_release_version "raring"  "13.04"
 lsb_release_version "quantal" "12.10"
 export sl_lsb_release_version
+echo "Detected OS: $sl_lsb_release_version $sl_lsb_release"
 
 export sl_apache_spark_url='https://apache.mirror.digitalpacific.com.au/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz'
 export sl_bat_url='https://github.com/sharkdp/bat/releases/download/v0.18.1/bat_0.18.1_amd64.deb'
 export sl_delta_url='https://github.com/dandavison/delta/releases/download/0.7.1/git-delta_0.7.1_amd64.deb'
 export sl_docker_compose_url='https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64'
-export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
 export sl_flutter_url='https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.0-stable.tar.xz'
 export sl_foundationdb_clients_url='https://www.foundationdb.org/downloads/6.3.12/ubuntu/installers/foundationdb-clients_6.3.12-1_amd64.deb'
 export sl_foundationdb_url='https://www.foundationdb.org/downloads/6.3.12/ubuntu/installers/foundationdb-server_6.3.12-1_amd64.deb'
