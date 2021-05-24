@@ -4,7 +4,7 @@ set -e
 
 pushd "$( mktemp -d )"
 
-echo 'export DOTNET_CLI_TELEMETRY_OPTOUT=1' >> "$HOME/.profile"
+echo 'export DOTNET_CLI_TELEMETRY_OPTOUT=1' >> "$HOME/.zshenv"
 
 wget -q "$sl_dotnetcore_sdk_url" -O dotnetcore.deb
 

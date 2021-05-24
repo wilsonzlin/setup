@@ -9,4 +9,4 @@ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debi
 sudo apt-get update
 sudo apt-get install -y dart
 
-echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.profile"
+echo 'export PATH="$PATH:/usr/lib/dart/bin"' >> "$HOME/.zshenv"

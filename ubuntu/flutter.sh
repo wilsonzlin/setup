@@ -13,7 +13,7 @@ tar xf "$file_name"
 
 rm "$file_name"
 
-echo "export PATH=\"\$PATH:$dest_dir/flutter/bin\"" >> "$HOME/.profile"
+echo "export PATH=\"\$PATH:$dest_dir/flutter/bin\"" >> "$HOME/.zshenv"
 
 flutter/bin/flutter config --no-analytics
 flutter/bin/flutter precache

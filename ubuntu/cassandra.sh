@@ -15,4 +15,4 @@ sudo systemctl --now disable cassandra
 
 pip install cassandra-driver
 
-echo 'export CQLSH_NO_BUNDLED=TRUE' >> "$HOME/.profile"
+echo 'export CQLSH_NO_BUNDLED=TRUE' >> "$HOME/.zshenv"

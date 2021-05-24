@@ -12,7 +12,7 @@ cd ttygif
 make
 sudo make install
 
-echo 'export WINDOWID=$(xdotool getwindowfocus)' >> "$HOME/.profile"
+echo 'export WINDOWID=$(xdotool getwindowfocus)' >> "$HOME/.zshenv"
 
 # ImageMagick may run out of resources when running ttygif, and it's possible to increase/remove
 # resource limits; see https://github.com/ImageMagick/ImageMagick/issues/396 for more details.

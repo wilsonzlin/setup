@@ -29,13 +29,13 @@ mkdir -p "$HOME/bin"
 
 # Make it so that $PATH also includes resolved paths of symlinked dirs in ~/bin.
 # Put in file to avoid repeated additions.
-if [ ! -f "$HOME/.profile.bindirs" ]; then
-  cat << 'EOD' >> "$HOME/.profile.bindirs"
+if [ ! -f "$HOME/.zshenv.bindirs" ]; then
+  cat << 'EOD' >> "$HOME/.zshenv.bindirs"
 for d in $(find -L "$HOME/bin" -type d); do
   export PATH="$(realpath "$d"):$PATH"
 done
 EOD
-  echo 'source "$HOME/.profile.bindirs"' >> "$HOME/.profile"
+  echo 'source "$HOME/.zshenv.bindirs"' >> "$HOME/.zshenv"
 fi
 
 if command -v python3; then
