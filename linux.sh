@@ -81,23 +81,23 @@ lsb_release_version "raring"  "13.04"
 lsb_release_version "quantal" "12.10"
 export sl_lsb_release_version
 
-export sl_apache_spark_url='https://www-us.apache.org/dist/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz'
-export sl_bat_url='https://github.com/sharkdp/bat/releases/download/v0.15.4/bat_0.15.4_amd64.deb'
-export sl_delta_url='https://github.com/dandavison/delta/releases/download/0.4.3/git-delta_0.4.3_amd64.deb'
-export sl_docker_compose_url="https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)"
+export sl_apache_spark_url='https://apache.mirror.digitalpacific.com.au/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz'
+export sl_bat_url='https://github.com/sharkdp/bat/releases/download/v0.18.1/bat_0.18.1_amd64.deb'
+export sl_delta_url='https://github.com/dandavison/delta/releases/download/0.7.1/git-delta_0.7.1_amd64.deb'
+export sl_docker_compose_url='https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64'
 export sl_dotnetcore_sdk_url="https://packages.microsoft.com/config/ubuntu/$sl_lsb_release_version/packages-microsoft-prod.deb"
-export sl_flutter_url='https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.1-stable.tar.xz'
-export sl_foundationdb_clients_url='https://www.foundationdb.org/downloads/6.2.25/ubuntu/installers/foundationdb-clients_6.2.25-1_amd64.deb'
-export sl_foundationdb_url='https://www.foundationdb.org/downloads/6.2.25/ubuntu/installers/foundationdb-server_6.2.25-1_amd64.deb'
-export sl_gitui_url='https://github.com/extrawurst/gitui/releases/download/v0.10.1/gitui-linux-musl.tar.gz'
-export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.1/hub-linux-amd64-2.14.1.tgz'
-export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.18.7455.tar.gz'
-export sl_maven_url='https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz'
-export sl_mysql_apt_url='https://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb'
-export sl_node_version='15'
-export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/download/v3.12.1/protoc-3.12.1-linux-x86_64.zip'
+export sl_flutter_url='https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.2.0-stable.tar.xz'
+export sl_foundationdb_clients_url='https://www.foundationdb.org/downloads/6.3.12/ubuntu/installers/foundationdb-clients_6.3.12-1_amd64.deb'
+export sl_foundationdb_url='https://www.foundationdb.org/downloads/6.3.12/ubuntu/installers/foundationdb-server_6.3.12-1_amd64.deb'
+export sl_gitui_url='https://github.com/extrawurst/gitui/releases/download/v0.15.0/gitui-linux-musl.tar.gz'
+export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz'
+export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.8352.tar.gz'
+export sl_maven_url='https://www.strategylions.com.au/mirror/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz'
+export sl_mysql_apt_url='https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb'
+export sl_node_version='16'
+export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/download/v3.17.0/protoc-3.17.0-linux-x86_64.zip'
 export sl_ripgrep_url='https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb'
-export sl_rstudio_url='https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb'
+export sl_rstudio_url='https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb'
 
 # Prerequisites.
 sudo apt update
