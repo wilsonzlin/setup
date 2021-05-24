@@ -15,6 +15,8 @@ rm "$file_name"
 
 echo "export PATH=\"\$PATH:$dest_dir/flutter/bin\"" >> "$HOME/.zshenv"
 
+# The following flutter commands require git.
+sudo apt install -y git
 flutter/bin/flutter config --no-analytics
 flutter/bin/flutter precache
 
