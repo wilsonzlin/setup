@@ -15,7 +15,7 @@
 set -euo pipefail
 shopt -s nullglob
 
-pushd "$(dirname "$0")"
+scripts_dir="$(dirname "$(realpath "$0")")"
 
 if [[ $EUID -eq 0 ]]; then
   echo "This script should not be run using sudo or as the root user"
@@ -118,7 +118,7 @@ while read -r -u 10 line; do
     echo "===================="
     echo "Starting $script..."
     echo "===================="
-    bash -c "set -Eeuxo pipefail; shopt -s nullglob; pushd \"\$(mktemp -d)\" > /dev/null; $(<ubuntu/"$script".sh); popd > /dev/null"
+    bash -c "set -Eeuxo pipefail; shopt -s nullglob; pushd \"\$(mktemp -d)\" > /dev/null; $(<"$scripts_dir/ubuntu/$script".sh); popd > /dev/null"
     echo "===================="
     echo "$script ended"
     echo "===================="
@@ -135,5 +135,3 @@ sudo apt autoremove -y
 echo "===================="
 echo "All done"
 echo "===================="
-
-popd
