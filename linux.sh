@@ -12,7 +12,7 @@
 # - lubuntu                16.04
 # - Linux Mint (Cinnamon)  18.1, 18.2, 19.0, 19.1
 
-set -e
+set -euo pipefail
 shopt -s nullglob
 
 pushd "$(dirname "$0")"
@@ -25,7 +25,7 @@ fi
 
 echo ============== REQUIREMENTS ==============
 echo "- A reliable Internet connection for the next hour or so"
-echo "- Package sources set to local, fast mirrors"
+echo "- Package sources set to local, fast, reliable mirrors"
 echo "- Update manager disabled to prevent potential conflicts during process"
 echo
 
@@ -98,32 +98,42 @@ export sl_hub_url='https://github.com/github/hub/releases/download/v2.14.2/hub-l
 export sl_jetbrains_toolbox_url='https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.8352.tar.gz'
 export sl_maven_url='https://www.strategylions.com.au/mirror/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz'
 export sl_mysql_apt_url='https://dev.mysql.com/get/mysql-apt-config_0.8.17-1_all.deb'
-export sl_node_version='16'
 export sl_protobuf_url='https://github.com/protocolbuffers/protobuf/releases/download/v3.17.0/protoc-3.17.0-linux-x86_64.zip'
 export sl_ripgrep_url='https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb'
 export sl_rstudio_url='https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb'
 
 # Prerequisites.
+apt_retry_line='APT::Acquire::Retries "5";'
+apt_retry_conf=/etc/apt/apt.conf.d/80-retries
+grep -qF -- "$apt_retry_line" "$apt_retry_conf" || echo "$apt_retry_line" | sudo tee -a "$apt_retry_conf"
 sudo apt update
 sudo apt install -y curl wget software-properties-common
 # Don't do any automatic system upgrades as we may be installing a single atom and not necessarily running after a fresh OS install.
 
-echo 'Now reading from stdin for list of atoms...'
-while read line; do
+echo "Now reading from $1 for list of atoms..."
+# -r to avoid mangling backslashes.
+# -u 10 to avoid scripts that require reading from stdin (e.g. TTY input) read from the file.
+while read -r -u 10 line; do
   for script in $line; do
-    bash "ubuntu/$script.sh" || exit 1
-    echo "Processed $script"
+    echo "===================="
+    echo "Starting $script..."
+    echo "===================="
+    bash -c "set -Eeuxo pipefail; shopt -s nullglob; pushd \"\$(mktemp -d)\" > /dev/null; $(<ubuntu/"$script".sh); popd > /dev/null"
+    echo "===================="
+    echo "$script ended"
+    echo "===================="
   done
-done
+done 10< "$1"
 
 # Post-install update and cleanup.
+echo "===================="
+echo "Running post-install update and cleanup..."
+echo "===================="
 sudo UCF_FORCE_CONFOLD=1 DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold dist-upgrade -y
 sudo apt autoremove -y
 
-echo
-echo "================================================="
-echo "Restart your device to complete the setup"
-echo "================================================="
-echo
+echo "===================="
+echo "All done"
+echo "===================="
 
 popd

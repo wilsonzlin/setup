@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $sl_lsb_release main" | \
     sudo tee /etc/apt/sources.list.d/azure-cli.list
 

@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 file_name='flutter.tar.xz'
 dest_dir="$HOME/Applications"
 

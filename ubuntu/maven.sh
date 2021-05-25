@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 pushd "$HOME/Applications"
 
 wget "$sl_maven_url" -O mvn.tar.gz

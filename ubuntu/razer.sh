@@ -1,9 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
-pushd "$( mktemp -d )"
-
 sudo apt install -y \
   libusb-1.0.0-dev \
   libc6-dev-i386 \
@@ -26,5 +20,3 @@ make
 sudo make install
 
 sudo systemctl start razerd
-
-popd

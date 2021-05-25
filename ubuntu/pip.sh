@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Add pip user installs to PATH.
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.zshenv"
 # Add pip user installs to PYTHONPATH

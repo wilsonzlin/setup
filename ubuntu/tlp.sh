@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 sudo add-apt-repository -y ppa:linrunner/tlp
 
 sudo apt update

@@ -1,9 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
-pushd "$( mktemp -d )"
-
 echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $sl_lsb_release contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.sources.list
 curl -L https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
 
@@ -19,5 +13,3 @@ wget "http://download.virtualbox.org/virtualbox/$VBOX_VERSION_POINT/$VBOX_EXTPAC
 sudo VBoxManage extpack install "$VBOX_EXTPACK_FILENAME" --replace <<< 'y'
 
 sudo usermod -a -G vboxusers "$USER"
-
-popd

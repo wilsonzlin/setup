@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 # Purge unneeded packages.
 # Purging `libreoffice*` will break Linux Mint's UI.
 # `gnome-control-center` requires `gnome-user-share` and a few `libtotem*` packages so don't purge `totem*`.

@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 sudo apt install -y zsh
 
 # Prevent the cloned repository from having insecure permissions. Failing to do

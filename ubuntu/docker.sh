@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-set -e
-
 # Official docs suggest using their repo over standard repo's legacy docker.io package.
 # However, more recent advice for docker.io suggest it's better as it's now kept up to date, and more modular and compact.
 # However however, docker.io installation doesn't work as reliably, with conflicting/mismatched dependency versions.
