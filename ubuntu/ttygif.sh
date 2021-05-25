@@ -1,4 +1,4 @@
-sudo apt install -y imagemagick ttyrec gcc x11-apps make git
+sudo apt install -y imagemagick ttyrec gcc x11-apps make git xdotool
 
 git clone https://github.com/icholy/ttygif.git
 
