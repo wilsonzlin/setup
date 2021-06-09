@@ -107,7 +107,7 @@ apt_retry_line='APT::Acquire::Retries "5";'
 apt_retry_conf=/etc/apt/apt.conf.d/80-retries
 grep -qF -- "$apt_retry_line" "$apt_retry_conf" || echo "$apt_retry_line" | sudo tee -a "$apt_retry_conf"
 sudo apt update
-sudo apt install -y curl wget software-properties-common
+sudo apt install -y curl wget software-properties-common unzip
 # Don't do any automatic system upgrades as we may be installing a single atom and not necessarily running after a fresh OS install.
 
 echo "Now reading from $1 for list of atoms..."
