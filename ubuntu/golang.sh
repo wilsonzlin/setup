@@ -2,4 +2,4 @@
 
 sudo rm -rf /usr/local/go
 curl -L 'https://golang.org/dl/go1.16.4.linux-amd64.tar.gz' | sudo tar -C /usr/local -zxf -
-echo 'export PATH=$PATH:/usr/local/go/bin' >> "$HOME/.zshenv"
+echo 'export PATH="$PATH:/usr/local/go/bin"' >> "$HOME/.zshenv"
