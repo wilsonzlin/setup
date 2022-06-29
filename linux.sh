@@ -65,6 +65,7 @@ lsb_release_version() {
     sl_lsb_release_version="$2"
   fi
 }
+lsb_release_version "jammy"   "22.04"
 lsb_release_version "hirsute" "21.04"
 lsb_release_version "groovy"  "20.10"
 lsb_release_version "focal"   "20.04"
