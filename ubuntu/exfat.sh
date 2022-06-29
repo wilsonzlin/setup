@@ -1,3 +1,1 @@
-sudo apt install -y \
-    exfat-fuse \
-    exfat-utils
+sudo apt install -y exfatprogs
